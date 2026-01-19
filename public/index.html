@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémarket - Diamond & Pearl</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+<!-- HERO / BACKGROUND -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <header class="top-header">
+        <div class="header-inner">
+            <div class="logo">
+                <h1>Pokémarket</h1>
+                <p>Samla. Köp. Lev.</p>
+            </div>
+
+            <button class="login-btn">Logga in</button>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <button class="active">Alla</button>
+    </nav>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+    <div class="toolbar">
+        <div class="sort">
+            <label for="sort">Sortera efter:</label>
+            <select id="sort">
+                <option value="lowPrice">Pris: Lägst först</option>
+                <option value="highPrice">Pris: Högst först</option>
+                <option value="name">Namn</option>
+            </select>
+        </div>
+    </div>
+
+    <section class="products" id="products">
+        <!-- JS will inject CSV products here -->
+    </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const productsContainer = document.getElementById('products');
+
+    // Load CSV
+    fetch('tempdata/DiamondandPearlProductsAndPrices.csv')
+        .then(res => res.text())
+        .then(csvText => {
+            const data = Papa.parse(csvText, { header: true, skipEmptyLines: true }).data;
+
+            function renderProducts(products) {
+                productsContainer.innerHTML = '';
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.classList.add('product-card');
+                    card.innerHTML = `
+                        <img src="${product.imageUrl}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>HP: ${product.extHP || '-'}</p>
+                        <p>Rarity: ${product.extRarity || '-'}</p>
+                        <p class="price">${parseFloat(product.lowPrice || 0).toFixed(2)} kr</p>
+                        <button onclick="window.open('${product.url}', '_blank')">Köp</button>
+                    `;
+                    productsContainer.appendChild(card);
+                });
+            }
+
+            renderProducts(data);
+
+            // Sorting
+            const sortSelect = document.getElementById('sort');
+            sortSelect.addEventListener('change', () => {
+                const val = sortSelect.value;
+                let sorted = [...data];
+                if(val === 'lowPrice') sorted.sort((a,b)=>parseFloat(a.lowPrice)-parseFloat(b.lowPrice));
+                else if(val === 'highPrice') sorted.sort((a,b)=>parseFloat(b.lowPrice)-parseFloat(a.lowPrice));
+                else if(val === 'name') sorted.sort((a,b)=>a.name.localeCompare(b.name));
+                renderProducts(sorted);
+            });
+        })
+        .catch(err => console.error('Error loading CSV:', err));
+});
+</script>
+
+</body>
+</html>
