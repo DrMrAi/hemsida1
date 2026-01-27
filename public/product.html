@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémarket - Product</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <header class="top-header">
+        <div class="header-inner">
+            <div class="logo">
+                <h1>Pokémarket</h1>
+                <p>Collect. Buy. Live.</p>
+            </div>
+
+            <button class="login-btn">Log in</button>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <button class="active">Product</button>
+    </nav>
+</section>
+
+<!-- MAIN -->
+<main class="container">
+
+    <section class="product-page">
+        <div class="product-image">
+            <img src="https://images.pokemontcg.io/dp1/1.png" alt="Dialga EX">
+        </div>
+
+        <div class="product-info">
+            <h2>Dialga EX - Diamond & Pearl</h2>
+
+            <p class="product-desc">
+                Legendary Pokémon card from the Diamond & Pearl expansion.  
+                Mint condition, perfect for collectors and competitive decks.
+            </p>
+
+            <p class="price">199.99 kr</p>
+
+            <div class="quantity">
+                <label for="qty">Quantity:</label>
+                <input type="number" id="qty" value="1" min="1">
+            </div>
+
+            <button class="add-cart-btn" onclick="addToCart()">Add to Basket</button>
+        </div>
+    </section>
+
+    <!-- CART -->
+    <section class="cart">
+        <h3>🛒 Basket</h3>
+        <ul id="cart-items"></ul>
+        <p id="total-price">Total: 0 kr</p>
+    </section>
+
+</main>
+
+<script>
+let cart = [];
+
+function addToCart() {
+    const name = "Dialga EX - Diamond & Pearl";
+    const price = 199.99;
+    const qty = parseInt(document.getElementById("qty").value);
+
+    cart.push({ name, price, qty });
+    renderCart();
+}
+
+function renderCart() {
+    const list = document.getElementById("cart-items");
+    list.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} kr`;
+        list.appendChild(li);
+        total += item.price * item.qty;
+    });
+
+    document.getElementById("total-price").textContent = "Total: " + total.toFixed(2) + " kr";
+}
+</script>
+
+</body>
+</html>
