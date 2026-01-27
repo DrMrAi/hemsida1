@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('products');
 
     // Load CSV
-    fetch('tempdata/DiamondandPearlProductsAndPrices.csv')
+    fetch('csv/DiamondandPearlProductsAndPrices.csv')
         .then(res => res.text())
         .then(csvText => {
             const data = Papa.parse(csvText, { header: true, skipEmptyLines: true }).data;
