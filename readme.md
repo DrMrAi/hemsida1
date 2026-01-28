@@ -4,7 +4,7 @@ cd hemsida1
 pnpm install
 pnpm node app.js
 5. Open http://localhost:3000 in webbrowser
-
+Diglett, Arceus, Lucario, Palkia, 
 
 Notes
 Hämta data från https://tcgcsv.com/

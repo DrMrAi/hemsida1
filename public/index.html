@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <title>Pokémarket - Diamond & Pearl</title>
     <link rel="stylesheet" href="style.css">
-    <!-- PapaParse for CSV parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
 
-<!-- HERO / BACKGROUND -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-overlay"></div>
 
@@ -19,7 +17,6 @@
                 <h1>Pokémarket</h1>
                 <p>Samla. Köp. Lev. hej hej</p>
             </div>
-
             <button class="login-btn">Logga in här hihi</button>
         </div>
     </header>
@@ -42,23 +39,17 @@
         </div>
     </div>
 
-    <section class="products" id="products">
-        <!-- JS will inject CSV products here -->
-    </section>
-
-    
+    <section class="products" id="products"></section>
 </main>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('products');
 
-    // Load CSV
-    fetch('csv/DiamondandPearlProductsAndPrices.csv')
-        .then(res => res.text())
-        .then(csvText => {
-            const data = Papa.parse(csvText, { header: true, skipEmptyLines: true }).data;
-
+    // Fetch all products from API
+    fetch('/api/products')
+        .then(res => res.json())
+        .then(data => {
             function renderProducts(products) {
                 productsContainer.innerHTML = '';
                 products.forEach(product => {
@@ -70,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>HP: ${product.extHP || '-'}</p>
                         <p>Rarity: ${product.extRarity || '-'}</p>
                         <p class="price">${parseFloat(product.lowPrice || 0).toFixed(2)} kr</p>
-                        <button onclick="window.open('${product.url}', '_blank')">Köp</button>
+                        <button onclick="window.location.href='/product/${product.id}'">Köp</button>
                     `;
                     productsContainer.appendChild(card);
                 });
@@ -89,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderProducts(sorted);
             });
         })
-        .catch(err => console.error('Error loading CSV:', err));
+        .catch(err => console.error('Error loading products:', err));
 });
 </script>
 

@@ -32,18 +32,15 @@
 
     <section class="product-page">
         <div class="product-image">
-            <img src="https://images.pokemontcg.io/dp1/1.png" alt="Dialga EX">
+            <img id="product-img" src="" alt="">
         </div>
 
         <div class="product-info">
-            <h2>Dialga EX - Diamond & Pearl</h2>
+            <h2 id="product-name"></h2>
 
-            <p class="product-desc">
-                Legendary Pokémon card from the Diamond & Pearl expansion.  
-                Mint condition, perfect for collectors and competitive decks.
-            </p>
+            <p class="product-desc" id="product-desc"></p>
 
-            <p class="price">199.99 kr</p>
+            <p class="price" id="product-price"></p>
 
             <div class="quantity">
                 <label for="qty">Quantity:</label>
@@ -64,11 +61,12 @@
 </main>
 
 <script>
+// --- Cart functionality ---
 let cart = [];
 
 function addToCart() {
-    const name = "Dialga EX - Diamond & Pearl";
-    const price = 199.99;
+    const name = document.getElementById("product-name").textContent;
+    const price = parseFloat(document.getElementById("product-price").textContent);
     const qty = parseInt(document.getElementById("qty").value);
 
     cart.push({ name, price, qty });
@@ -89,6 +87,28 @@ function renderCart() {
 
     document.getElementById("total-price").textContent = "Total: " + total.toFixed(2) + " kr";
 }
+
+// --- Fetch product data dynamically ---
+document.addEventListener('DOMContentLoaded', () => {
+    const productId = window.location.pathname.split("/").pop();
+
+    fetch(`/api/products/${productId}`)
+        .then(res => {
+            if (!res.ok) throw new Error("Product not found");
+            return res.json();
+        })
+        .then(product => {
+            document.getElementById("product-img").src = product.imageUrl;
+            document.getElementById("product-img").alt = product.name;
+            document.getElementById("product-name").textContent = product.name + " - Diamond & Pearl";
+            document.getElementById("product-desc").textContent = product.description || "No description available.";
+            document.getElementById("product-price").textContent = parseFloat(product.lowPrice || 0).toFixed(2);
+        })
+        .catch(err => {
+            console.error(err);
+            document.querySelector(".product-page").innerHTML = "<p>Product not found.</p>";
+        });
+});
 </script>
 
 </body>
