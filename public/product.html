@@ -98,7 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return res.json();
         })
         .then(product => {
-            document.getElementById("product-img").src = product.imageUrl;
+            // Replace "200w" with "400w" in image URL
+            const highResImageUrl = product.imageUrl ? product.imageUrl.replace('200w', '400w') : '';
+
+            document.getElementById("product-img").src = highResImageUrl;
             document.getElementById("product-img").alt = product.name;
             document.getElementById("product-name").textContent = product.name + " - Diamond & Pearl";
             document.getElementById("product-desc").textContent = product.description || "No description available.";

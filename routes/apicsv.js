@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Papa = require('papaparse');
 
-const csvFilePath = path.join(__dirname, '../data/DiamondandPearlProductsAndPrices.csv');
+const csvFilePath = path.join(__dirname, '../data/sorted_by_name.csv');
 
 // GET all products
 router.get('/products', (req, res) => {
