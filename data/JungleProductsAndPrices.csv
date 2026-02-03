@@ -1,0 +1,329 @@
+productId,name,cleanName,imageUrl,categoryId,groupId,url,modifiedOn,imageCount,extNumber,extRarity,extCardType,extHP,extStage,extAttack1,extAttack2,extWeakness,extResistance,extRetreatCost,lowPrice,midPrice,highPrice,marketPrice,directLowPrice,subTypeName,extCardText
+45120,Clefable (1),Clefable 1,https://tcgplayer-cdn.tcgplayer.com/product/45120_200w.jpg,3,635,https://cpt.tcgcsv.com/q3n,2023-11-27T18:49:46.257,1,01/64,Holo Rare,Colorless,70,Stage 1,"[1] Metronome
+<br>
+Choose 1 of the Defending Pokémon's attacks. Metronome copies that attack except for its Energy costs and anything else required in order to use that attack, such as discarding Energy cards. <em>(No matter what type the Defending Pokémon is, Clefable's type is still Colorless.)</em>","[2] Minimize
+<br>
+All damage done by attacks to Clefable during your opponent's next turn is reduced by 20 <em>(after applying Weakness and Resistance)</em>.",F,P-30,2,47.0,67.49,124.99,77.26,,1st Edition Holofoil,
+45120,Clefable (1),Clefable 1,https://tcgplayer-cdn.tcgplayer.com/product/45120_200w.jpg,3,635,https://cpt.tcgcsv.com/q3n,2023-11-27T18:49:46.257,1,01/64,Holo Rare,Colorless,70,Stage 1,"[1] Metronome
+<br>
+Choose 1 of the Defending Pokémon's attacks. Metronome copies that attack except for its Energy costs and anything else required in order to use that attack, such as discarding Energy cards. <em>(No matter what type the Defending Pokémon is, Clefable's type is still Colorless.)</em>","[2] Minimize
+<br>
+All damage done by attacks to Clefable during your opponent's next turn is reduced by 20 <em>(after applying Weakness and Resistance)</em>.",F,P-30,2,14.03,28.73,64.99,30.13,,Unlimited Holofoil,
+45121,Scyther (10),Scyther 10,https://tcgplayer-cdn.tcgplayer.com/product/45121_200w.jpg,3,635,https://cpt.tcgcsv.com/r3n,2025-12-10T22:19:02.663,1,10/64,Holo Rare,Grass,70,Basic,"[G] Swords Dance
+<br>During your next turn, Scyther's Slash attack's base damage is 60 instead of 30.",[3] Slash (30),R,F-30,,62.8,78.0,130.0,111.99,,1st Edition Holofoil,
+45121,Scyther (10),Scyther 10,https://tcgplayer-cdn.tcgplayer.com/product/45121_200w.jpg,3,635,https://cpt.tcgcsv.com/r3n,2025-12-10T22:19:02.663,1,10/64,Holo Rare,Grass,70,Basic,"[G] Swords Dance
+<br>During your next turn, Scyther's Slash attack's base damage is 60 instead of 30.",[3] Slash (30),R,F-30,,23.2,37.43,9999.0,35.91,,Unlimited Holofoil,
+45122,Snorlax (11),Snorlax 11,https://tcgplayer-cdn.tcgplayer.com/product/45122_200w.jpg,3,635,https://cpt.tcgcsv.com/s3n,2025-12-10T22:19:33.06,1,11/64,Holo Rare,Colorless,90,Basic,"[4] Body Slam (30)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",,F,P-30,4,230.0,250.0,399.99,291.99,,1st Edition Holofoil,"<strong>Pokémon Power: Thick Skinned</strong>
+<br>
+Snorlax can't become Asleep, Confused, Paralyzed, or Poisoned. This power can't be used if Snorlax is already Asleep, Confused, or Paralyzed."
+45122,Snorlax (11),Snorlax 11,https://tcgplayer-cdn.tcgplayer.com/product/45122_200w.jpg,3,635,https://cpt.tcgcsv.com/s3n,2025-12-10T22:19:33.06,1,11/64,Holo Rare,Colorless,90,Basic,"[4] Body Slam (30)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",,F,P-30,4,65.0,77.47,219.99,89.08,,Unlimited Holofoil,"<strong>Pokémon Power: Thick Skinned</strong>
+<br>
+Snorlax can't become Asleep, Confused, Paralyzed, or Poisoned. This power can't be used if Snorlax is already Asleep, Confused, or Paralyzed."
+45123,Vaporeon (12),Vaporeon 12,https://tcgplayer-cdn.tcgplayer.com/product/45123_200w.jpg,3,635,https://cpt.tcgcsv.com/t3n,2025-12-10T22:19:58.877,1,12/64,Holo Rare,Water,80,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1WW] Water Gun (30+)
+<br>Does 30 damage plus 10 more damage for each Water Energy attached to Vaporeon but not used to pay for this attack's Energy cost. Extra Water energy after the 2nd doesn't count.",L,,1,50.0,125.8,9999.0,239.19,239.98,1st Edition Holofoil,
+45123,Vaporeon (12),Vaporeon 12,https://tcgplayer-cdn.tcgplayer.com/product/45123_200w.jpg,3,635,https://cpt.tcgcsv.com/t3n,2025-12-10T22:19:58.877,1,12/64,Holo Rare,Water,80,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1WW] Water Gun (30+)
+<br>Does 30 damage plus 10 more damage for each Water Energy attached to Vaporeon but not used to pay for this attack's Energy cost. Extra Water energy after the 2nd doesn't count.",L,,1,13.99,27.36,9999.0,30.81,,Unlimited Holofoil,
+45124,Venomoth (13),Venomoth 13,https://tcgplayer-cdn.tcgplayer.com/product/45124_200w.jpg,3,635,https://cpt.tcgcsv.com/v3n,2025-12-10T22:20:31.317,1,13/64,Holo Rare,Grass,70,Stage 1,"[GG] Venom Powder (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused and Poisoned.",,R,F-30,,36.22,65.11,98.0,80.78,,1st Edition Holofoil,"<strong>Pokémon Power: Shift</strong> Once during your turn <em>(before your attack)</em>, you may change the type of Venomoth to the type of any other Pokémon in play other than Colorless. This power can't be used if Venomoth is Asleep, Confused, or Paralyzed."
+45124,Venomoth (13),Venomoth 13,https://tcgplayer-cdn.tcgplayer.com/product/45124_200w.jpg,3,635,https://cpt.tcgcsv.com/v3n,2025-12-10T22:20:31.317,1,13/64,Holo Rare,Grass,70,Stage 1,"[GG] Venom Powder (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused and Poisoned.",,R,F-30,,14.0,20.45,34.0,22.01,,Unlimited Holofoil,"<strong>Pokémon Power: Shift</strong> Once during your turn <em>(before your attack)</em>, you may change the type of Venomoth to the type of any other Pokémon in play other than Colorless. This power can't be used if Venomoth is Asleep, Confused, or Paralyzed."
+45125,Victreebel (14),Victreebel 14,https://tcgplayer-cdn.tcgplayer.com/product/45125_200w.jpg,3,635,https://cpt.tcgcsv.com/w3n,2025-12-10T22:21:40.05,1,14/64,Holo Rare,Grass,80,Stage 2,"[G] Lure
+<br>If your opponent has any Benched Pokémon, choose 1 of them and switch it with his or her Active Pokémon.","[GG] Acid (20)
+<br>Flip a coin. If heads, the Defending Pokémon can't retreat during your opponent's next turn.",R,,2,24.25,32.99,113.34,86.73,,1st Edition Holofoil,
+45125,Victreebel (14),Victreebel 14,https://tcgplayer-cdn.tcgplayer.com/product/45125_200w.jpg,3,635,https://cpt.tcgcsv.com/w3n,2025-12-10T22:21:40.05,1,14/64,Holo Rare,Grass,80,Stage 2,"[G] Lure
+<br>If your opponent has any Benched Pokémon, choose 1 of them and switch it with his or her Active Pokémon.","[GG] Acid (20)
+<br>Flip a coin. If heads, the Defending Pokémon can't retreat during your opponent's next turn.",R,,2,13.5,22.45,399.6,24.98,,Unlimited Holofoil,
+45126,Vileplume (15),Vileplume 15,https://tcgplayer-cdn.tcgplayer.com/product/45126_200w.jpg,3,635,https://cpt.tcgcsv.com/x3n,2024-12-28T02:27:31.617,1,15/64,Holo Rare,Grass,80,Stage 2,"[GGG] Petal Dance (40x)
+<br>Flip 3 coins. This attack does 40 damage times the number of heads. Vileplume is now Confused <em>(after doing damage)</em>.",,R,,2,43.86,82.58,92.94,86.74,,1st Edition Holofoil,"<strong>Pokémon Power: Heal</strong> Once during your turn <em>(before your attack)</em>, you may flip a coin. If heads, remove 1 damage counter from 1 of your Pokémon. This power can't be used if Vileplume is Asleep, Confused, or Paralyzed."
+45126,Vileplume (15),Vileplume 15,https://tcgplayer-cdn.tcgplayer.com/product/45126_200w.jpg,3,635,https://cpt.tcgcsv.com/x3n,2024-12-28T02:27:31.617,1,15/64,Holo Rare,Grass,80,Stage 2,"[GGG] Petal Dance (40x)
+<br>Flip 3 coins. This attack does 40 damage times the number of heads. Vileplume is now Confused <em>(after doing damage)</em>.",,R,,2,16.99,24.2,63.97,25.45,,Unlimited Holofoil,"<strong>Pokémon Power: Heal</strong> Once during your turn <em>(before your attack)</em>, you may flip a coin. If heads, remove 1 damage counter from 1 of your Pokémon. This power can't be used if Vileplume is Asleep, Confused, or Paralyzed."
+45127,Wigglytuff (16),Wigglytuff 16,https://tcgplayer-cdn.tcgplayer.com/product/45127_200w.jpg,3,635,https://cpt.tcgcsv.com/z3n,2025-03-14T14:43:02.387,1,16/64,Holo Rare,Colorless,80,Stage 1,"[1] Lullaby
+<br>The Defending Pokémon is now Asleep.","[3] Do the Wave (10+)
+<br>Does 10 damage plus 10 more damage for each of your Benched Pokémon.",F,P-30,2,39.99,53.78,90.0,73.17,52.22,1st Edition Holofoil,
+45127,Wigglytuff (16),Wigglytuff 16,https://tcgplayer-cdn.tcgplayer.com/product/45127_200w.jpg,3,635,https://cpt.tcgcsv.com/z3n,2025-03-14T14:43:02.387,1,16/64,Holo Rare,Colorless,80,Stage 1,"[1] Lullaby
+<br>The Defending Pokémon is now Asleep.","[3] Do the Wave (10+)
+<br>Does 10 damage plus 10 more damage for each of your Benched Pokémon.",F,P-30,2,17.03,24.33,55.19,29.61,,Unlimited Holofoil,
+45128,Electrode (2),Electrode 2,https://tcgplayer-cdn.tcgplayer.com/product/45128_200w.jpg,3,635,https://cpt.tcgcsv.com/B3n,2023-09-01T08:16:37.04,1,02/64,Holo Rare,Lightning,90,Stage 1,[2] Tackle (20),"[LLL] Chain Lightning (20)
+<br>If the Defending Pokémon isn't Colorless, this attack does 10 damage to each Benched Pokémon of the same type as the Defending Pokémon <em>(including your own)</em>.",F,,1,33.99,57.5,99.0,51.91,,1st Edition Holofoil,
+45128,Electrode (2),Electrode 2,https://tcgplayer-cdn.tcgplayer.com/product/45128_200w.jpg,3,635,https://cpt.tcgcsv.com/B3n,2023-09-01T08:16:37.04,1,02/64,Holo Rare,Lightning,90,Stage 1,[2] Tackle (20),"[LLL] Chain Lightning (20)
+<br>If the Defending Pokémon isn't Colorless, this attack does 10 damage to each Benched Pokémon of the same type as the Defending Pokémon <em>(including your own)</em>.",F,,1,13.65,19.88,27.96,22.37,,Unlimited Holofoil,
+45129,Flareon (3),Flareon 3,https://tcgplayer-cdn.tcgplayer.com/product/45129_200w.jpg,3,635,https://cpt.tcgcsv.com/C3n,2025-12-10T22:14:48.867,1,03/64,Holo Rare,Fire,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[2RR] Flamethrower (60)
+<br>Discard 1 Fire Energy card attached to Flareon in order to use this attack.",W,,1,107.89,199.99,390.26,130.47,,1st Edition Holofoil,
+45129,Flareon (3),Flareon 3,https://tcgplayer-cdn.tcgplayer.com/product/45129_200w.jpg,3,635,https://cpt.tcgcsv.com/C3n,2025-12-10T22:14:48.867,1,03/64,Holo Rare,Fire,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[2RR] Flamethrower (60)
+<br>Discard 1 Fire Energy card attached to Flareon in order to use this attack.",W,,1,45.01,80.98,9999.0,75.08,,Unlimited Holofoil,
+45130,Jolteon (4),Jolteon 4,https://tcgplayer-cdn.tcgplayer.com/product/45130_200w.jpg,3,635,https://cpt.tcgcsv.com/D3n,2025-12-29T16:14:35.553,1,04/64,Holo Rare,Lightning,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1LL] Pin Missile (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,,1,149.99,212.38,299.99,163.37,,1st Edition Holofoil,
+45130,Jolteon (4),Jolteon 4,https://tcgplayer-cdn.tcgplayer.com/product/45130_200w.jpg,3,635,https://cpt.tcgcsv.com/D3n,2025-12-29T16:14:35.553,1,04/64,Holo Rare,Lightning,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1LL] Pin Missile (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,,1,40.71,80.31,121.99,80.12,,Unlimited Holofoil,
+45131,Kangaskhan (5),Kangaskhan 5,https://tcgplayer-cdn.tcgplayer.com/product/45131_200w.jpg,3,635,https://cpt.tcgcsv.com/F3n,2025-12-10T22:16:02.94,1,05/64,Holo Rare,Colorless,90,Basic,"[1] Fetch
+<br>Draw a card.","[4] Comet Punch (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,P-30,3,17.54,37.72,83.65,75.89,,1st Edition Holofoil,
+45131,Kangaskhan (5),Kangaskhan 5,https://tcgplayer-cdn.tcgplayer.com/product/45131_200w.jpg,3,635,https://cpt.tcgcsv.com/F3n,2025-12-10T22:16:02.94,1,05/64,Holo Rare,Colorless,90,Basic,"[1] Fetch
+<br>Draw a card.","[4] Comet Punch (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,P-30,3,6.65,11.7,45.0,11.44,,Unlimited Holofoil,
+45132,Mr. Mime (6),Mr Mime 6,https://tcgplayer-cdn.tcgplayer.com/product/45132_200w.jpg,3,635,https://cpt.tcgcsv.com/G3n,2025-12-10T22:16:53.213,1,06/64,Holo Rare,Psychic,40,Basic,"[1P] Meditate (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on the Defending Pokémon.",,P,,,40.13,69.5,150.0,80.09,,1st Edition Holofoil,"<strong>Pokémon Power: Invisible Wall</strong> Whenever an attack <em>(including your own)</em> does 30 or more damage to Mr. Mime <em>(after applying Weakness and Resistance)</em>, prevent that damage. <em>(Any other effects of attacks still happen.)</em> This power can't be used if Mr. Mime is Asleep, Confused, or Paralyzed."
+45132,Mr. Mime (6),Mr Mime 6,https://tcgplayer-cdn.tcgplayer.com/product/45132_200w.jpg,3,635,https://cpt.tcgcsv.com/G3n,2025-12-10T22:16:53.213,1,06/64,Holo Rare,Psychic,40,Basic,"[1P] Meditate (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on the Defending Pokémon.",,P,,,14.0,26.3,71.25,27.63,,Unlimited Holofoil,"<strong>Pokémon Power: Invisible Wall</strong> Whenever an attack <em>(including your own)</em> does 30 or more damage to Mr. Mime <em>(after applying Weakness and Resistance)</em>, prevent that damage. <em>(Any other effects of attacks still happen.)</em> This power can't be used if Mr. Mime is Asleep, Confused, or Paralyzed."
+45133,Nidoqueen (7),Nidoqueen 7,https://tcgplayer-cdn.tcgplayer.com/product/45133_200w.jpg,3,635,https://cpt.tcgcsv.com/H3n,2025-12-10T22:17:24.35,1,07/64,Holo Rare,Grass,90,Stage 2,"[1G] Boyfriends (20+)
+<br>Does 20 damage plus 20 more damage for each Nidoking you have in play.",[2GG] Mega Punch (50),P,,3,45.39,60.37,999.98,95.2,,1st Edition Holofoil,
+45133,Nidoqueen (7),Nidoqueen 7,https://tcgplayer-cdn.tcgplayer.com/product/45133_200w.jpg,3,635,https://cpt.tcgcsv.com/H3n,2025-12-10T22:17:24.35,1,07/64,Holo Rare,Grass,90,Stage 2,"[1G] Boyfriends (20+)
+<br>Does 20 damage plus 20 more damage for each Nidoking you have in play.",[2GG] Mega Punch (50),P,,3,9.99,21.86,49.95,28.29,,Unlimited Holofoil,
+45134,Pidgeot (8),Pidgeot 8,https://tcgplayer-cdn.tcgplayer.com/product/45134_200w.jpg,3,635,https://cpt.tcgcsv.com/J3n,2025-12-29T16:18:45.597,1,08/64,Holo Rare,Colorless,80,Stage 2,[2] Wing Attack (20),"[3] Hurricane (30)
+<br>Unless this attack Knocks Out the Defending Pokémon, return the Defending Pokémon and all cards attached to it to your opponent's hand.",L,F-30,,71.22,80.1,145.21,127.89,,1st Edition Holofoil,
+45134,Pidgeot (8),Pidgeot 8,https://tcgplayer-cdn.tcgplayer.com/product/45134_200w.jpg,3,635,https://cpt.tcgcsv.com/J3n,2025-12-29T16:18:45.597,1,08/64,Holo Rare,Colorless,80,Stage 2,[2] Wing Attack (20),"[3] Hurricane (30)
+<br>Unless this attack Knocks Out the Defending Pokémon, return the Defending Pokémon and all cards attached to it to your opponent's hand.",L,F-30,,19.99,29.99,139.43,43.36,139.43,Unlimited Holofoil,
+45135,Pinsir (9),Pinsir 9,https://tcgplayer-cdn.tcgplayer.com/product/45135_200w.jpg,3,635,https://cpt.tcgcsv.com/K3n,2025-12-10T22:18:35.83,1,09/64,Holo Rare,Grass,60,Basic,"[GG] Irongrip (20)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",[2GG] Guillotine (50),R,,1,68.69,74.55,114.99,83.63,,1st Edition Holofoil,
+45135,Pinsir (9),Pinsir 9,https://tcgplayer-cdn.tcgplayer.com/product/45135_200w.jpg,3,635,https://cpt.tcgcsv.com/K3n,2025-12-10T22:18:35.83,1,09/64,Holo Rare,Grass,60,Basic,"[GG] Irongrip (20)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",[2GG] Guillotine (50),R,,1,16.0,23.35,45.0,28.14,,Unlimited Holofoil,
+45136,Butterfree,Butterfree,https://tcgplayer-cdn.tcgplayer.com/product/45136_200w.jpg,3,635,https://cpt.tcgcsv.com/L3n,2026-01-29T16:03:11.333,1,33/64,Uncommon,Grass,70,Stage 2,"[2] Whirlwind (20)
+<br>If your opponent has any Benched Pokémon, he or she chooses 1 of them and switches it with the Defending Pokémon. <em>(Do the damage before switching Pokémon.)</em>","[GGGG] Mega Drain (40)
+<br>Remove a number of damage counters from Butterfree equal to half the damage done to the Defending Pokémon <em>(after applying Weakness and Resistance)</em> (rounded up to the nearest 10).",R,F-30,,4.0,7.96,49.97,8.55,,1st Edition,
+45136,Butterfree,Butterfree,https://tcgplayer-cdn.tcgplayer.com/product/45136_200w.jpg,3,635,https://cpt.tcgcsv.com/L3n,2026-01-29T16:03:11.333,1,33/64,Uncommon,Grass,70,Stage 2,"[2] Whirlwind (20)
+<br>If your opponent has any Benched Pokémon, he or she chooses 1 of them and switches it with the Defending Pokémon. <em>(Do the damage before switching Pokémon.)</em>","[GGGG] Mega Drain (40)
+<br>Remove a number of damage counters from Butterfree equal to half the damage done to the Defending Pokémon <em>(after applying Weakness and Resistance)</em> (rounded up to the nearest 10).",R,F-30,,0.25,0.94,30.0,1.15,0.55,Unlimited,
+45137,Dodrio,Dodrio,https://tcgplayer-cdn.tcgplayer.com/product/45137_200w.jpg,3,635,https://cpt.tcgcsv.com/M3n,2025-12-29T16:59:12.52,1,34/64,Uncommon,Colorless,70,Stage 1,"[3] Rage (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on Dodrio.",,L,F-30,,1.0,1.75,14.99,3.31,,1st Edition,"<strong>Pokémon Power: Retreat Aid</strong> As long as Dodrio is Benched, pay 1 Colorless less to retreat your Active Pokémon."
+45137,Dodrio,Dodrio,https://tcgplayer-cdn.tcgplayer.com/product/45137_200w.jpg,3,635,https://cpt.tcgcsv.com/M3n,2025-12-29T16:59:12.52,1,34/64,Uncommon,Colorless,70,Stage 1,"[3] Rage (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on Dodrio.",,L,F-30,,0.2,0.74,8.99,0.86,0.97,Unlimited,"<strong>Pokémon Power: Retreat Aid</strong> As long as Dodrio is Benched, pay 1 Colorless less to retreat your Active Pokémon."
+45138,Exeggutor,Exeggutor,https://tcgplayer-cdn.tcgplayer.com/product/45138_200w.jpg,3,635,https://cpt.tcgcsv.com/N3n,2026-01-29T15:58:01.083,1,35/64,Uncommon,Grass,80,Stage 1,"[P] Teleport
+<br>Switch Exeggutor with 1 of your Benched Pokémon.","[1] Big Eggsplosion (20x)
+<br>Flip a number of coins equal to the number of Energy attached to Exeggutor. This attack does 20 damage times the number of heads.",R,,3,1.69,3.15,97.8,3.61,4.62,1st Edition,
+45138,Exeggutor,Exeggutor,https://tcgplayer-cdn.tcgplayer.com/product/45138_200w.jpg,3,635,https://cpt.tcgcsv.com/N3n,2026-01-29T15:58:01.083,1,35/64,Uncommon,Grass,80,Stage 1,"[P] Teleport
+<br>Switch Exeggutor with 1 of your Benched Pokémon.","[1] Big Eggsplosion (20x)
+<br>Flip a number of coins equal to the number of Energy attached to Exeggutor. This attack does 20 damage times the number of heads.",R,,3,0.19,0.9,70.0,1.38,0.8,Unlimited,
+45139,Fearow,Fearow,https://tcgplayer-cdn.tcgplayer.com/product/45139_200w.jpg,3,635,https://cpt.tcgcsv.com/P3n,2026-01-29T16:02:42.43,1,36/64,Uncommon,Colorless,70,Stage 1,"[3] Agility (20)
+<br> Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Fearow.",[4] Drill Peck (40),L,F-30,,1.07,1.75,8.46,2.74,,1st Edition,
+45139,Fearow,Fearow,https://tcgplayer-cdn.tcgplayer.com/product/45139_200w.jpg,3,635,https://cpt.tcgcsv.com/P3n,2026-01-29T16:02:42.43,1,36/64,Uncommon,Colorless,70,Stage 1,"[3] Agility (20)
+<br> Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Fearow.",[4] Drill Peck (40),L,F-30,,0.18,0.51,8.99,0.83,0.34,Unlimited,
+45140,Gloom,Gloom,https://tcgplayer-cdn.tcgplayer.com/product/45140_200w.jpg,3,635,https://cpt.tcgcsv.com/Q3n,2025-11-26T05:03:54.857,1,37/64,Uncommon,Grass,60,Stage 1,"[G] Poisonpowder
+<br>The Defending Pokémon is now Poisoned.","[GG] Foul Oder (20)
+<br>Both the Defending Pokémon and Gloom are now Confused <em>(after doing damage)</em>.",R,,1,0.88,1.99,19.99,3.43,,1st Edition,
+45140,Gloom,Gloom,https://tcgplayer-cdn.tcgplayer.com/product/45140_200w.jpg,3,635,https://cpt.tcgcsv.com/Q3n,2025-11-26T05:03:54.857,1,37/64,Uncommon,Grass,60,Stage 1,"[G] Poisonpowder
+<br>The Defending Pokémon is now Poisoned.","[GG] Foul Oder (20)
+<br>Both the Defending Pokémon and Gloom are now Confused <em>(after doing damage)</em>.",R,,1,0.23,0.5,5.0,0.61,,Unlimited,
+45141,Lickitung,Lickitung,https://tcgplayer-cdn.tcgplayer.com/product/45141_200w.jpg,3,635,https://cpt.tcgcsv.com/R3n,2026-01-29T15:59:49.257,1,38/64,Uncommon,Colorless,90,Basic,"[1] Tongue Wrap (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.","[2] Supersonic
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused.",F,P-30,3,1.0,4.13,24.99,6.8,24.99,1st Edition,
+45141,Lickitung,Lickitung,https://tcgplayer-cdn.tcgplayer.com/product/45141_200w.jpg,3,635,https://cpt.tcgcsv.com/R3n,2026-01-29T15:59:49.257,1,38/64,Uncommon,Colorless,90,Basic,"[1] Tongue Wrap (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.","[2] Supersonic
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused.",F,P-30,3,0.25,0.75,4.99,1.15,0.4,Unlimited,
+45142,Marowak,Marowak,https://tcgplayer-cdn.tcgplayer.com/product/45142_200w.jpg,3,635,https://cpt.tcgcsv.com/S3n,2025-11-26T05:05:46.39,1,39/64,Uncommon,Fighting,60,Stage 1,"[FF] Bonemerang (30x)
+<br>Flip 2 coins. This attack does 30 damage times the number of heads.","[1FF] Call for Friend
+<br>Search your deck for a Fighting Basic Pokémon and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",G,L-30,1,1.06,4.06,97.99,8.53,17.06,1st Edition,
+45142,Marowak,Marowak,https://tcgplayer-cdn.tcgplayer.com/product/45142_200w.jpg,3,635,https://cpt.tcgcsv.com/S3n,2025-11-26T05:05:46.39,1,39/64,Uncommon,Fighting,60,Stage 1,"[FF] Bonemerang (30x)
+<br>Flip 2 coins. This attack does 30 damage times the number of heads.","[1FF] Call for Friend
+<br>Search your deck for a Fighting Basic Pokémon and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",G,L-30,1,0.35,0.76,30515.32,1.02,,Unlimited,
+45143,Nidorina,Nidorina,https://tcgplayer-cdn.tcgplayer.com/product/45143_200w.jpg,3,635,https://cpt.tcgcsv.com/T3n,2023-09-03T05:32:57.853,1,40/64,Uncommon,Grass,70,Stage 1,"[G] Supersonic
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused.","[2G] Double Kick (30x)
+<br>Flip 2 coins. This attack does 30 damage times the number of heads.",P,,1,0.89,1.58,26.47,2.68,,1st Edition,
+45143,Nidorina,Nidorina,https://tcgplayer-cdn.tcgplayer.com/product/45143_200w.jpg,3,635,https://cpt.tcgcsv.com/T3n,2023-09-03T05:32:57.853,1,40/64,Uncommon,Grass,70,Stage 1,"[G] Supersonic
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused.","[2G] Double Kick (30x)
+<br>Flip 2 coins. This attack does 30 damage times the number of heads.",P,,1,0.17,0.42,4.99,0.4,,Unlimited,
+45144,Parasect,Parasect,https://tcgplayer-cdn.tcgplayer.com/product/45144_200w.jpg,3,635,https://cpt.tcgcsv.com/V3n,2026-01-29T16:00:52.96,1,41/64,Uncommon,Grass,60,Stage 1,"[GG] Spore
+<br>The Defending Pokémon is now Asleep.",[3] Slash (30),R,,,0.6,1.5,12.99,3.0,3.37,1st Edition,
+45144,Parasect,Parasect,https://tcgplayer-cdn.tcgplayer.com/product/45144_200w.jpg,3,635,https://cpt.tcgcsv.com/V3n,2026-01-29T16:00:52.96,1,41/64,Uncommon,Grass,60,Stage 1,"[GG] Spore
+<br>The Defending Pokémon is now Asleep.",[3] Slash (30),R,,,0.2,0.59,31279.42,0.79,0.39,Unlimited,
+45145,Persian,Persian,https://tcgplayer-cdn.tcgplayer.com/product/45145_200w.jpg,3,635,https://cpt.tcgcsv.com/W3n,2025-11-26T05:18:11.067,1,42/64,Uncommon,Colorless,70,Stage 1,[2] Scratch (20),"[3] Pounce (30)
+<br>If the Defending Pokémon attacks Persian during your opponent's next turn, any damage done by the attack is reduced by 10 <em>(after applying Weakness and Resistance)</em>. <em>(Benching either Pokemon ends this effect.)</em>",F,P-30,,1.57,1.95,14.99,4.29,,1st Edition,
+45145,Persian,Persian,https://tcgplayer-cdn.tcgplayer.com/product/45145_200w.jpg,3,635,https://cpt.tcgcsv.com/W3n,2025-11-26T05:18:11.067,1,42/64,Uncommon,Colorless,70,Stage 1,[2] Scratch (20),"[3] Pounce (30)
+<br>If the Defending Pokémon attacks Persian during your opponent's next turn, any damage done by the attack is reduced by 10 <em>(after applying Weakness and Resistance)</em>. <em>(Benching either Pokemon ends this effect.)</em>",F,P-30,,0.23,0.63,999.0,0.7,0.3,Unlimited,
+45146,Primeape,Primeape,https://tcgplayer-cdn.tcgplayer.com/product/45146_200w.jpg,3,635,https://cpt.tcgcsv.com/X3n,2026-01-29T16:02:10.003,1,43/64,Uncommon,Fighting,70,Stage 1,"[FF] Fury Swipes (20x)
+<br>Flip 3 coins. This attack does 20 damage times the number of heads.","[1FF] Tantrum (50)
+<br>Flip a coin. If tails, Primeape is now Confused <em>(after doing damage)</em>.",P,,1,1.26,3.32,29.99,5.21,1.69,1st Edition,
+45146,Primeape,Primeape,https://tcgplayer-cdn.tcgplayer.com/product/45146_200w.jpg,3,635,https://cpt.tcgcsv.com/X3n,2026-01-29T16:02:10.003,1,43/64,Uncommon,Fighting,70,Stage 1,"[FF] Fury Swipes (20x)
+<br>Flip 3 coins. This attack does 20 damage times the number of heads.","[1FF] Tantrum (50)
+<br>Flip a coin. If tails, Primeape is now Confused <em>(after doing damage)</em>.",P,,1,0.27,0.71,28368.45,1.28,0.5,Unlimited,
+45147,Rapidash,Rapidash,https://tcgplayer-cdn.tcgplayer.com/product/45147_200w.jpg,3,635,https://cpt.tcgcsv.com/Z3n,2026-01-29T16:04:59.243,1,44/64,Uncommon,Fire,70,Stage 1,"[2] Stomp (20+)
+<br>Flip a coin. If heads, this attack does 20 damage plus 10 more damage; if tails, this attack does 20 damage.","[1RR] Agility (30)
+<br>Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Rapidash.",W,,,3.73,7.49,34.96,9.62,9.62,1st Edition,
+45147,Rapidash,Rapidash,https://tcgplayer-cdn.tcgplayer.com/product/45147_200w.jpg,3,635,https://cpt.tcgcsv.com/Z3n,2026-01-29T16:04:59.243,1,44/64,Uncommon,Fire,70,Stage 1,"[2] Stomp (20+)
+<br>Flip a coin. If heads, this attack does 20 damage plus 10 more damage; if tails, this attack does 20 damage.","[1RR] Agility (30)
+<br>Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Rapidash.",W,,,0.39,1.0,8.99,1.48,1.07,Unlimited,
+45148,Rhydon,Rhydon,https://tcgplayer-cdn.tcgplayer.com/product/45148_200w.jpg,3,635,https://cpt.tcgcsv.com/-3n,2026-01-29T16:03:45.22,1,45/64,Uncommon,Fighting,100,Stage 1,[2F] Horn Attack (30),"[FFFF] Ram (50)
+<br>Rhydon does 20 damage to itself, if your opponent has any Benched Pokémon, he or she chooses 1 of them and switches it with the Defending Pokémon. <em>(Do the damage before switching the Pokémon. Switch the Pokémon even if Rhydon is knocked out.)</em>",G,L-30,3,11.99,18.49,39.99,17.68,27.97,1st Edition,
+45148,Rhydon,Rhydon,https://tcgplayer-cdn.tcgplayer.com/product/45148_200w.jpg,3,635,https://cpt.tcgcsv.com/-3n,2026-01-29T16:03:45.22,1,45/64,Uncommon,Fighting,100,Stage 1,[2F] Horn Attack (30),"[FFFF] Ram (50)
+<br>Rhydon does 20 damage to itself, if your opponent has any Benched Pokémon, he or she chooses 1 of them and switches it with the Defending Pokémon. <em>(Do the damage before switching the Pokémon. Switch the Pokémon even if Rhydon is knocked out.)</em>",G,L-30,3,0.25,0.7,30724.14,0.93,,Unlimited,
+45149,Seaking,Seaking,https://tcgplayer-cdn.tcgplayer.com/product/45149_200w.jpg,3,635,https://cpt.tcgcsv.com/_3n,2025-11-26T05:23:40.153,1,46/64,Uncommon,Water,70,Stage 1,[W] Horn Attack (10),[1W] Waterfall (30),L,,1,1.49,2.8,5.08,3.49,4.49,1st Edition,
+45149,Seaking,Seaking,https://tcgplayer-cdn.tcgplayer.com/product/45149_200w.jpg,3,635,https://cpt.tcgcsv.com/_3n,2025-11-26T05:23:40.153,1,46/64,Uncommon,Water,70,Stage 1,[W] Horn Attack (10),[1W] Waterfall (30),L,,1,0.24,0.63,4.99,0.81,0.47,Unlimited,
+45150,Tauros,Tauros,https://tcgplayer-cdn.tcgplayer.com/product/45150_200w.jpg,3,635,https://cpt.tcgcsv.com/05n,2025-11-26T05:26:46.163,1,47/64,Uncommon,Colorless,60,Basic,"[2] Stomp (20+)
+<br>Flip a coin. If heads, this attack does 20 damage plus 10 more damage; if tails, this attack does 20 damage.","[3] Rampage (20+)
+<br>Does 20 damage plus 10 more damage for each damage counter on Tauros. Flip a coin. If tails, Tauros is now Confused <em>(after doing damage)</em>.",F,P-30,2,2.0,4.75,14.99,7.56,,1st Edition,
+45150,Tauros,Tauros,https://tcgplayer-cdn.tcgplayer.com/product/45150_200w.jpg,3,635,https://cpt.tcgcsv.com/05n,2025-11-26T05:26:46.163,1,47/64,Uncommon,Colorless,60,Basic,"[2] Stomp (20+)
+<br>Flip a coin. If heads, this attack does 20 damage plus 10 more damage; if tails, this attack does 20 damage.","[3] Rampage (20+)
+<br>Does 20 damage plus 10 more damage for each damage counter on Tauros. Flip a coin. If tails, Tauros is now Confused <em>(after doing damage)</em>.",F,P-30,2,0.2,0.59,30185.98,0.8,0.31,Unlimited,
+45151,Weepinbell,Weepinbell,https://tcgplayer-cdn.tcgplayer.com/product/45151_200w.jpg,3,635,https://cpt.tcgcsv.com/25n,2025-11-29T03:18:21.277,1,48/64,Uncommon,Grass,70,Stage 1,"[G] Poisonpowder (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Poisoned.",[GG] Razor Leaf (30),R,,1,0.69,1.77,19.99,2.74,1.4,1st Edition,
+45151,Weepinbell,Weepinbell,https://tcgplayer-cdn.tcgplayer.com/product/45151_200w.jpg,3,635,https://cpt.tcgcsv.com/25n,2025-11-29T03:18:21.277,1,48/64,Uncommon,Grass,70,Stage 1,"[G] Poisonpowder (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Poisoned.",[GG] Razor Leaf (30),R,,1,0.19,0.47,5.52,0.63,0.32,Unlimited,
+45152,Bellsprout,Bellsprout,https://tcgplayer-cdn.tcgplayer.com/product/45152_200w.jpg,3,635,https://cpt.tcgcsv.com/35n,2025-12-29T16:52:15.483,1,49/64,Common,Grass,40,Basic,[G] Vine Whip (10),"[G] Call for Family
+<br>Search your deck for a Basic Pokémon named Bellsprout and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",R,,1,0.94,4.95,22.99,8.52,0.94,1st Edition,
+45152,Bellsprout,Bellsprout,https://tcgplayer-cdn.tcgplayer.com/product/45152_200w.jpg,3,635,https://cpt.tcgcsv.com/35n,2025-12-29T16:52:15.483,1,49/64,Common,Grass,40,Basic,[G] Vine Whip (10),"[G] Call for Family
+<br>Search your deck for a Basic Pokémon named Bellsprout and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",R,,1,0.09,0.35,11.02,0.38,0.15,Unlimited,
+45153,Cubone,Cubone,https://tcgplayer-cdn.tcgplayer.com/product/45153_200w.jpg,3,635,https://cpt.tcgcsv.com/55n,2026-01-29T15:56:31,1,50/64,Common,Fighting,40,Basic,"[1] Snivel
+<br>If the Defending Pokémon attacks Cubone during your opponent's next turn, any damage done by that attack is reduced by 20 <em>(after applying Weakness and Resistance)</em>. <em>(Benching either Pokemon ends this effect.)</em>","[FF] Rage (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on Cubone.",G,L-30,1,10.57,18.25,94.99,18.02,29.98,1st Edition,
+45153,Cubone,Cubone,https://tcgplayer-cdn.tcgplayer.com/product/45153_200w.jpg,3,635,https://cpt.tcgcsv.com/55n,2026-01-29T15:56:31,1,50/64,Common,Fighting,40,Basic,"[1] Snivel
+<br>If the Defending Pokémon attacks Cubone during your opponent's next turn, any damage done by that attack is reduced by 20 <em>(after applying Weakness and Resistance)</em>. <em>(Benching either Pokemon ends this effect.)</em>","[FF] Rage (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on Cubone.",G,L-30,1,0.13,0.68,501.5,1.5,0.5,Unlimited,
+45154,Eevee,Eevee,https://tcgplayer-cdn.tcgplayer.com/product/45154_200w.jpg,3,635,https://cpt.tcgcsv.com/65n,2026-01-29T15:57:02.16,1,51/64,Common,Colorless,50,Basic,"[1] Tail Wag
+<br>Flip a coin. If heads, the Defending Pokémon can't attack Eevee during your opponent's next turn. <em>(Benching either Pokémon ends this effect.)</em>","[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.",F,P-30,1,4.49,10.88,73.75,11.61,9.96,1st Edition,
+45154,Eevee,Eevee,https://tcgplayer-cdn.tcgplayer.com/product/45154_200w.jpg,3,635,https://cpt.tcgcsv.com/65n,2026-01-29T15:57:02.16,1,51/64,Common,Colorless,50,Basic,"[1] Tail Wag
+<br>Flip a coin. If heads, the Defending Pokémon can't attack Eevee during your opponent's next turn. <em>(Benching either Pokémon ends this effect.)</em>","[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.",F,P-30,1,0.15,0.77,23669.58,1.19,1.71,Unlimited,
+45155,Exeggcute,Exeggcute,https://tcgplayer-cdn.tcgplayer.com/product/45155_200w.jpg,3,635,https://cpt.tcgcsv.com/75n,2025-10-31T18:45:19.107,1,52/64,Common,Grass,50,Basic,"[P] Hypnosis
+<br>The Defending Pokémon is now Asleep.","[GG] Leech Seed (20)
+<br>Unless all damage from this attack is prevented, you may remove 1 damage counter from Exeggcute.",R,,1,0.63,2.22,70.0,2.56,1.0,1st Edition,
+45155,Exeggcute,Exeggcute,https://tcgplayer-cdn.tcgplayer.com/product/45155_200w.jpg,3,635,https://cpt.tcgcsv.com/75n,2025-10-31T18:45:19.107,1,52/64,Common,Grass,50,Basic,"[P] Hypnosis
+<br>The Defending Pokémon is now Asleep.","[GG] Leech Seed (20)
+<br>Unless all damage from this attack is prevented, you may remove 1 damage counter from Exeggcute.",R,,1,0.01,0.37,27831.88,0.36,0.18,Unlimited,
+45156,Goldeen,Goldeen,https://tcgplayer-cdn.tcgplayer.com/product/45156_200w.jpg,3,635,https://cpt.tcgcsv.com/85n,2025-10-31T18:45:19.533,1,53/64,Common,Water,40,Basic,[W] Horn Attack (10),,L,,,0.57,1.25,18.69,1.7,0.59,1st Edition,
+45156,Goldeen,Goldeen,https://tcgplayer-cdn.tcgplayer.com/product/45156_200w.jpg,3,635,https://cpt.tcgcsv.com/85n,2025-10-31T18:45:19.533,1,53/64,Common,Water,40,Basic,[W] Horn Attack (10),,L,,,0.1,0.36,501.5,0.36,0.2,Unlimited,
+45157,Jigglypuff,Jigglypuff,https://tcgplayer-cdn.tcgplayer.com/product/45157_200w.jpg,3,635,https://cpt.tcgcsv.com/95n,2026-01-29T15:58:33.253,1,54/64,Common,Colorless,60,Basic,"[1] Lullaby
+<br>The Defending Pokémon is now Asleep.",[2] Pound (20),F,P-30,1,3.59,8.23,59.89,9.18,0.74,1st Edition,
+45157,Jigglypuff,Jigglypuff,https://tcgplayer-cdn.tcgplayer.com/product/45157_200w.jpg,3,635,https://cpt.tcgcsv.com/95n,2026-01-29T15:58:33.253,1,54/64,Common,Colorless,60,Basic,"[1] Lullaby
+<br>The Defending Pokémon is now Asleep.",[2] Pound (20),F,P-30,1,0.1,0.42,14.34,1.51,,Unlimited,
+45158,Mankey,Mankey,https://tcgplayer-cdn.tcgplayer.com/product/45158_200w.jpg,3,635,https://cpt.tcgcsv.com/b5n,2025-11-26T05:05:20.79,1,55/64,Common,Fighting,30,Basic,[1] Scratch (10),,P,,,0.5,1.99,22.99,2.96,5.44,1st Edition,"<strong>Pokémon Power: Peek</strong> Once during your turn <em>(before your attack)</em>, you may look at one of the following: the top card of either player's deck, a random card from your opponent's hand, or one of either player's Prizes. This power can't be. used if Mankey is Asleep, Confused, or Paralyzed."
+45158,Mankey,Mankey,https://tcgplayer-cdn.tcgplayer.com/product/45158_200w.jpg,3,635,https://cpt.tcgcsv.com/b5n,2025-11-26T05:05:20.79,1,55/64,Common,Fighting,30,Basic,[1] Scratch (10),,P,,,0.01,0.37,29.0,0.43,0.25,Unlimited,"<strong>Pokémon Power: Peek</strong> Once during your turn <em>(before your attack)</em>, you may look at one of the following: the top card of either player's deck, a random card from your opponent's hand, or one of either player's Prizes. This power can't be. used if Mankey is Asleep, Confused, or Paralyzed."
+45159,Meowth,Meowth,https://tcgplayer-cdn.tcgplayer.com/product/45159_200w.jpg,3,635,https://cpt.tcgcsv.com/c5n,2026-01-29T16:00:19.797,1,56/64,Common,Colorless,50,Basic,"[2] Pay Day (10)
+<br>Flip a coin. If heads, draw a card.",,F,P-30,1,2.1,5.5,39.54,8.68,1.75,1st Edition,
+45159,Meowth,Meowth,https://tcgplayer-cdn.tcgplayer.com/product/45159_200w.jpg,3,635,https://cpt.tcgcsv.com/c5n,2026-01-29T16:00:19.797,1,56/64,Common,Colorless,50,Basic,"[2] Pay Day (10)
+<br>Flip a coin. If heads, draw a card.",,F,P-30,1,0.15,0.48,29699.9,0.65,0.3,Unlimited,
+45160,Nidoran F,Nidoran F,https://tcgplayer-cdn.tcgplayer.com/product/45160_200w.jpg,3,635,https://cpt.tcgcsv.com/d5n,2025-11-20T01:51:33.107,1,57/64,Common,Grass,60,Basic,"[G] Fury Swipes (10x)
+<br>Flip 3 coins. This attack does 10 damage times the number of heads.","[GG] Call for Family
+<br>Search your deck for a Basic Pokémon named Nidoran M or Nidoran F and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",P,,1,0.4,1.0,18.69,1.82,0.88,1st Edition,
+45160,Nidoran F,Nidoran F,https://tcgplayer-cdn.tcgplayer.com/product/45160_200w.jpg,3,635,https://cpt.tcgcsv.com/d5n,2025-11-20T01:51:33.107,1,57/64,Common,Grass,60,Basic,"[G] Fury Swipes (10x)
+<br>Flip 3 coins. This attack does 10 damage times the number of heads.","[GG] Call for Family
+<br>Search your deck for a Basic Pokémon named Nidoran M or Nidoran F and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",P,,1,0.12,0.32,501.5,0.31,0.15,Unlimited,
+45161,Oddish,Oddish,https://tcgplayer-cdn.tcgplayer.com/product/45161_200w.jpg,3,635,https://cpt.tcgcsv.com/f5n,2025-11-26T05:11:19.157,1,58/64,Common,Grass,50,Basic,"[G] Stun Spore (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.","[GG] Sprout
+<br>Search your deck for a Basic Pokémon named Oddish and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",R,,1,0.93,3.65,48.0,4.29,0.86,1st Edition,
+45161,Oddish,Oddish,https://tcgplayer-cdn.tcgplayer.com/product/45161_200w.jpg,3,635,https://cpt.tcgcsv.com/f5n,2025-11-26T05:11:19.157,1,58/64,Common,Grass,50,Basic,"[G] Stun Spore (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.","[GG] Sprout
+<br>Search your deck for a Basic Pokémon named Oddish and put it onto your Bench. Shuffle your deck afterward. <em>(You can't use this attack if your Bench is full.)</em>",R,,1,0.1,0.35,501.5,0.34,0.2,Unlimited,
+45162,Paras,Paras,https://tcgplayer-cdn.tcgplayer.com/product/45162_200w.jpg,3,635,https://cpt.tcgcsv.com/g5n,2025-10-31T18:45:19.277,1,59/64,Common,Grass,40,Basic,[2] Scratch (20),"[GG] Spore
+<br>The Defending Pokémon is now Asleep.",R,,1,0.3,0.9,9.99,1.89,0.64,1st Edition,
+45162,Paras,Paras,https://tcgplayer-cdn.tcgplayer.com/product/45162_200w.jpg,3,635,https://cpt.tcgcsv.com/g5n,2025-10-31T18:45:19.277,1,59/64,Common,Grass,40,Basic,[2] Scratch (20),"[GG] Spore
+<br>The Defending Pokémon is now Asleep.",R,,1,0.09,0.37,501.5,0.37,0.2,Unlimited,
+45163,Pikachu,Pikachu,https://tcgplayer-cdn.tcgplayer.com/product/45163_200w.jpg,3,635,https://cpt.tcgcsv.com/h5n,2026-01-28T17:51:04.52,1,60/64,Common,Lightning,50,Basic,"[LL] Spark (20)
+<br>If your opponent has any Benched Pokémon, choose 1 of them and this attack does 10 damage to it. <em>(Don't apply Weakness and Resistance for Benched Pokémon.)</em>",,F,,1,7.21,9.71,109.28,18.69,49.99,1st Edition,
+45163,Pikachu,Pikachu,https://tcgplayer-cdn.tcgplayer.com/product/45163_200w.jpg,3,635,https://cpt.tcgcsv.com/h5n,2026-01-28T17:51:04.52,1,60/64,Common,Lightning,50,Basic,"[LL] Spark (20)
+<br>If your opponent has any Benched Pokémon, choose 1 of them and this attack does 10 damage to it. <em>(Don't apply Weakness and Resistance for Benched Pokémon.)</em>",,F,,1,0.2,1.5,31406.84,2.31,,Unlimited,
+45164,Rhyhorn,Rhyhorn,https://tcgplayer-cdn.tcgplayer.com/product/45164_200w.jpg,3,635,https://cpt.tcgcsv.com/j5n,2025-11-29T03:17:52.067,1,61/64,Common,Fighting,70,Basic,"[1] Leer
+<br>Flip a coin. If heads, the Defending Pokémon can't attack Rhyhorn during your opponent's next turn. <em>(Benching either Pokémon ends this effect.)</em>",[2F] Horn Attack (30),G,L-30,3,0.49,1.58,18.69,2.72,0.72,1st Edition,
+45164,Rhyhorn,Rhyhorn,https://tcgplayer-cdn.tcgplayer.com/product/45164_200w.jpg,3,635,https://cpt.tcgcsv.com/j5n,2025-11-29T03:17:52.067,1,61/64,Common,Fighting,70,Basic,"[1] Leer
+<br>Flip a coin. If heads, the Defending Pokémon can't attack Rhyhorn during your opponent's next turn. <em>(Benching either Pokémon ends this effect.)</em>",[2F] Horn Attack (30),G,L-30,3,0.1,0.36,9999.0,0.4,0.23,Unlimited,
+45165,Spearow,Spearow,https://tcgplayer-cdn.tcgplayer.com/product/45165_200w.jpg,3,635,https://cpt.tcgcsv.com/k5n,2025-11-26T05:26:19.583,1,62/64,Common,Colorless,50,Basic,[1] Peck (10),"[3] Mirror Move
+<br>If Spearow was attacked last turn, do the final result of that attack on Spearow to the Defending Pokémon.",L,F-30,,0.16,1.98,28.69,3.3,0.8,1st Edition,
+45165,Spearow,Spearow,https://tcgplayer-cdn.tcgplayer.com/product/45165_200w.jpg,3,635,https://cpt.tcgcsv.com/k5n,2025-11-26T05:26:19.583,1,62/64,Common,Colorless,50,Basic,[1] Peck (10),"[3] Mirror Move
+<br>If Spearow was attacked last turn, do the final result of that attack on Spearow to the Defending Pokémon.",L,F-30,,0.01,0.35,5.0,0.37,0.24,Unlimited,
+45166,Venonat,Venonat,https://tcgplayer-cdn.tcgplayer.com/product/45166_200w.jpg,3,635,https://cpt.tcgcsv.com/l5n,2025-11-26T05:29:31.907,1,63/64,Common,Grass,40,Basic,"[G] Stun Spore (10)
+<br>Flip a coin> If heads, the Defending Pokémon is now Paralyzed.","[1G] Leech Life (10)
+<br>Remove a number of damage counters from Venonat equal to the damage done to the Defending Pokémon <em>(after applying Weakness and Resistance)</em>.",R,,1,0.39,1.13,18.69,3.07,0.94,1st Edition,
+45166,Venonat,Venonat,https://tcgplayer-cdn.tcgplayer.com/product/45166_200w.jpg,3,635,https://cpt.tcgcsv.com/l5n,2025-11-26T05:29:31.907,1,63/64,Common,Grass,40,Basic,"[G] Stun Spore (10)
+<br>Flip a coin> If heads, the Defending Pokémon is now Paralyzed.","[1G] Leech Life (10)
+<br>Remove a number of damage counters from Venonat equal to the damage done to the Defending Pokémon <em>(after applying Weakness and Resistance)</em>.",R,,1,0.01,0.39,26645.36,0.4,0.2,Unlimited,
+45167,Poke Ball,Poke Ball,https://tcgplayer-cdn.tcgplayer.com/product/45167_200w.jpg,3,635,https://cpt.tcgcsv.com/m5n,2025-11-26T05:20:47.677,1,64/64,Common,Trainer,,,,,,,,0.15,0.62,29.0,7.91,0.4,1st Edition,"Flip a coin. If heads, you may search your deck for any Basic Pokémon or Evolution card. Show that card to your opponent, then put it into your hand. Shuffle your deck afterward."
+45167,Poke Ball,Poke Ball,https://tcgplayer-cdn.tcgplayer.com/product/45167_200w.jpg,3,635,https://cpt.tcgcsv.com/m5n,2025-11-26T05:20:47.677,1,64/64,Common,Trainer,,,,,,,,0.04,0.25,29219.8,0.26,0.13,Unlimited,"Flip a coin. If heads, you may search your deck for any Basic Pokémon or Evolution card. Show that card to your opponent, then put it into your hand. Shuffle your deck afterward."
+106979,Clefable (17),Clefable 17,https://tcgplayer-cdn.tcgplayer.com/product/106979_200w.jpg,3,635,https://cpt.tcgcsv.com/CPS,2025-12-29T16:56:08.227,1,17/64,Rare,Colorless,70,Stage 1,"[1] Metronome
+<br>
+Choose 1 of the Defending Pokémon's attacks. Metronome copies that attack except for its Energy costs and anything else required in order to use that attack, such as discarding Energy cards. <em>(No matter what type the Defending Pokémon is, Clefable's type is still Colorless.)</em>","[2] Minimize
+<br>
+All damage done by attacks to Clefable during your opponent's next turn is reduced by 20 <em>(after applying Weakness and Resistance)</em>.",F,P-30,2,6.5,8.55,69.97,14.5,,1st Edition,
+106979,Clefable (17),Clefable 17,https://tcgplayer-cdn.tcgplayer.com/product/106979_200w.jpg,3,635,https://cpt.tcgcsv.com/CPS,2025-12-29T16:56:08.227,1,17/64,Rare,Colorless,70,Stage 1,"[1] Metronome
+<br>
+Choose 1 of the Defending Pokémon's attacks. Metronome copies that attack except for its Energy costs and anything else required in order to use that attack, such as discarding Energy cards. <em>(No matter what type the Defending Pokémon is, Clefable's type is still Colorless.)</em>","[2] Minimize
+<br>
+All damage done by attacks to Clefable during your opponent's next turn is reduced by 20 <em>(after applying Weakness and Resistance)</em>.",F,P-30,2,2.24,3.99,10.0,5.19,,Unlimited,
+106980,Electrode (18),Electrode 18,https://tcgplayer-cdn.tcgplayer.com/product/106980_200w.jpg,3,635,https://cpt.tcgcsv.com/DPS,2024-09-17T15:23:43.583,1,18/64,Rare,Lightning,90,Stage 1,[2] Tackle (20),"[LLL] Chain Lightning (20)
+<br>If the Defending Pokémon isn't Colorless, this attack does 10 damage to each Benched Pokémon of the same type as the Defending Pokémon <em>(including your own)</em>.",F,,1,12.15,22.14,30.0,26.61,,1st Edition,<br><br><strong><em>Product Disclaimer: 1st Edition versions of this card feature the incorrect artwork from Base Set while Unlimited versions will have the correct artwork.</em></strong>
+106980,Electrode (18),Electrode 18,https://tcgplayer-cdn.tcgplayer.com/product/106980_200w.jpg,3,635,https://cpt.tcgcsv.com/DPS,2024-09-17T15:23:43.583,1,18/64,Rare,Lightning,90,Stage 1,[2] Tackle (20),"[LLL] Chain Lightning (20)
+<br>If the Defending Pokémon isn't Colorless, this attack does 10 damage to each Benched Pokémon of the same type as the Defending Pokémon <em>(including your own)</em>.",F,,1,1.99,4.5,9.99,4.71,4.97,Unlimited,<br><br><strong><em>Product Disclaimer: 1st Edition versions of this card feature the incorrect artwork from Base Set while Unlimited versions will have the correct artwork.</em></strong>
+106981,Flareon (19),Flareon 19,https://tcgplayer-cdn.tcgplayer.com/product/106981_200w.jpg,3,635,https://cpt.tcgcsv.com/FPS,2025-12-29T19:34:38.343,1,19/64,Rare,Fire,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[2RR] Flamethrower (60)
+<br>Discard 1 Fire Energy card attached to Flareon in order to use this attack.",W,,1,17.99,21.95,9999.0,25.74,,1st Edition,
+106981,Flareon (19),Flareon 19,https://tcgplayer-cdn.tcgplayer.com/product/106981_200w.jpg,3,635,https://cpt.tcgcsv.com/FPS,2025-12-29T19:34:38.343,1,19/64,Rare,Fire,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[2RR] Flamethrower (60)
+<br>Discard 1 Fire Energy card attached to Flareon in order to use this attack.",W,,1,5.0,7.98,9999.0,9.78,39.99,Unlimited,
+106982,Jolteon (20),Jolteon 20,https://tcgplayer-cdn.tcgplayer.com/product/106982_200w.jpg,3,635,https://cpt.tcgcsv.com/GPS,2026-01-29T15:59:17.023,1,20/64,Rare,Lightning,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1LL] Pin Missile (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,,1,20.16,55.0,9999.0,26.3,,1st Edition,
+106982,Jolteon (20),Jolteon 20,https://tcgplayer-cdn.tcgplayer.com/product/106982_200w.jpg,3,635,https://cpt.tcgcsv.com/GPS,2026-01-29T15:59:17.023,1,20/64,Rare,Lightning,70,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1LL] Pin Missile (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,,1,6.0,12.06,9999.0,14.1,,Unlimited,
+106983,Kangaskhan (21),Kangaskhan 21,https://tcgplayer-cdn.tcgplayer.com/product/106983_200w.jpg,3,635,https://cpt.tcgcsv.com/HPS,2023-03-24T18:31:48.413,1,21/64,Rare,Colorless,90,Basic,"[1] Fetch
+<br>Draw a card.","[4] Comet Punch (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,P-30,3,5.77,10.05,66.98,12.11,,1st Edition,
+106983,Kangaskhan (21),Kangaskhan 21,https://tcgplayer-cdn.tcgplayer.com/product/106983_200w.jpg,3,635,https://cpt.tcgcsv.com/HPS,2023-03-24T18:31:48.413,1,21/64,Rare,Colorless,90,Basic,"[1] Fetch
+<br>Draw a card.","[4] Comet Punch (20x)
+<br>Flip 4 coins. This attack does 20 damage times the number of heads.",F,P-30,3,1.49,3.7,49.99,4.2,,Unlimited,
+106984,Mr. Mime (22),Mr Mime 22,https://tcgplayer-cdn.tcgplayer.com/product/106984_200w.jpg,3,635,https://cpt.tcgcsv.com/JPS,2023-05-20T11:37:34.32,1,22/64,Rare,Psychic,40,Basic,"[1P] Meditate (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on the Defending Pokémon.",,P,,,9.79,13.47,59.99,18.38,,1st Edition,"<strong>Pokémon Power: Invisible Wall</strong> Whenever an attack <em>(including your own)</em> does 30 or more damage to Mr. Mime <em>(after applying Weakness and Resistance)</em>, prevent that damage. <em>(Any other effects of attacks still happen.)</em> This power can't be used if Mr. Mime is Asleep, Confused, or Paralyzed."
+106984,Mr. Mime (22),Mr Mime 22,https://tcgplayer-cdn.tcgplayer.com/product/106984_200w.jpg,3,635,https://cpt.tcgcsv.com/JPS,2023-05-20T11:37:34.32,1,22/64,Rare,Psychic,40,Basic,"[1P] Meditate (10+)
+<br>Does 10 damage plus 10 more damage for each damage counter on the Defending Pokémon.",,P,,,2.93,6.69,12.43,7.56,,Unlimited,"<strong>Pokémon Power: Invisible Wall</strong> Whenever an attack <em>(including your own)</em> does 30 or more damage to Mr. Mime <em>(after applying Weakness and Resistance)</em>, prevent that damage. <em>(Any other effects of attacks still happen.)</em> This power can't be used if Mr. Mime is Asleep, Confused, or Paralyzed."
+106985,Nidoqueen (23),Nidoqueen 23,https://tcgplayer-cdn.tcgplayer.com/product/106985_200w.jpg,3,635,https://cpt.tcgcsv.com/KPS,2023-05-27T17:30:57.64,1,23/64,Rare,Grass,90,Stage 2,"[1G] Boyfriends (20+)
+<br>Does 20 damage plus 20 more damage for each Nidoking you have in play.",[2GG] Mega Punch (50),P,,3,9.19,10.43,19.87,14.31,,1st Edition,
+106985,Nidoqueen (23),Nidoqueen 23,https://tcgplayer-cdn.tcgplayer.com/product/106985_200w.jpg,3,635,https://cpt.tcgcsv.com/KPS,2023-05-27T17:30:57.64,1,23/64,Rare,Grass,90,Stage 2,"[1G] Boyfriends (20+)
+<br>Does 20 damage plus 20 more damage for each Nidoking you have in play.",[2GG] Mega Punch (50),P,,3,3.0,5.86,9999.0,6.27,,Unlimited,
+106986,Pidgeot (24),Pidgeot 24,https://tcgplayer-cdn.tcgplayer.com/product/106986_200w.jpg,3,635,https://cpt.tcgcsv.com/LPS,2026-01-29T16:01:39.577,1,24/64,Rare,Colorless,80,Stage 2,[2] Wing Attack (20),"[3] Hurricane (30)
+<br>Unless this attack Knocks Out the Defending Pokémon, return the Defending Pokémon and all cards attached to it to your opponent's hand.",L,F-30,,11.49,13.43,19.99,13.57,,1st Edition,
+106986,Pidgeot (24),Pidgeot 24,https://tcgplayer-cdn.tcgplayer.com/product/106986_200w.jpg,3,635,https://cpt.tcgcsv.com/LPS,2026-01-29T16:01:39.577,1,24/64,Rare,Colorless,80,Stage 2,[2] Wing Attack (20),"[3] Hurricane (30)
+<br>Unless this attack Knocks Out the Defending Pokémon, return the Defending Pokémon and all cards attached to it to your opponent's hand.",L,F-30,,2.16,4.5,9999.0,5.08,,Unlimited,
+106987,Pinsir (25),Pinsir 25,https://tcgplayer-cdn.tcgplayer.com/product/106987_200w.jpg,3,635,https://cpt.tcgcsv.com/MPS,2025-11-26T05:20:05.507,1,25/64,Rare,Grass,60,Basic,"[GG] Irongrip (20)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",[2GG] Guillotine (50),R,,1,7.19,17.36,9999.0,16.88,,1st Edition,
+106987,Pinsir (25),Pinsir 25,https://tcgplayer-cdn.tcgplayer.com/product/106987_200w.jpg,3,635,https://cpt.tcgcsv.com/MPS,2025-11-26T05:20:05.507,1,25/64,Rare,Grass,60,Basic,"[GG] Irongrip (20)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",[2GG] Guillotine (50),R,,1,2.07,4.0,9999.0,4.56,,Unlimited,
+106988,Scyther (26),Scyther 26,https://tcgplayer-cdn.tcgplayer.com/product/106988_200w.jpg,3,635,https://cpt.tcgcsv.com/NPS,2025-11-26T05:23:02.88,1,26/64,Rare,Grass,70,Basic,"[G] Swords Dance
+<br>During your next turn, Scyther's Slash attack's base damage is 60 instead of 30.",[3] Slash (30),R,F-30,,13.5,15.64,9999.0,29.28,,1st Edition,
+106988,Scyther (26),Scyther 26,https://tcgplayer-cdn.tcgplayer.com/product/106988_200w.jpg,3,635,https://cpt.tcgcsv.com/NPS,2025-11-26T05:23:02.88,1,26/64,Rare,Grass,70,Basic,"[G] Swords Dance
+<br>During your next turn, Scyther's Slash attack's base damage is 60 instead of 30.",[3] Slash (30),R,F-30,,7.0,10.32,24.99,12.66,,Unlimited,
+106989,Snorlax (27),Snorlax 27,https://tcgplayer-cdn.tcgplayer.com/product/106989_200w.jpg,3,635,https://cpt.tcgcsv.com/PPS,2022-11-16T21:47:22.34,1,27/64,Rare,Colorless,90,Basic,"[4] Body Slam (30)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",,F,P-30,4,35.0,43.16,9999.0,42.22,,1st Edition,"<strong>Pokémon Power: Thick Skinned</strong>
+<br>
+Snorlax can't become Asleep, Confused, Paralyzed, or Poisoned. This power can't be used if Snorlax is already Asleep, Confused, or Paralyzed."
+106989,Snorlax (27),Snorlax 27,https://tcgplayer-cdn.tcgplayer.com/product/106989_200w.jpg,3,635,https://cpt.tcgcsv.com/PPS,2022-11-16T21:47:22.34,1,27/64,Rare,Colorless,90,Basic,"[4] Body Slam (30)
+<br>Flip a coin. If heads, the Defending Pokémon is now Paralyzed.",,F,P-30,4,5.45,8.5,49.97,13.76,,Unlimited,"<strong>Pokémon Power: Thick Skinned</strong>
+<br>
+Snorlax can't become Asleep, Confused, Paralyzed, or Poisoned. This power can't be used if Snorlax is already Asleep, Confused, or Paralyzed."
+106990,Vaporeon (28),Vaporeon 28,https://tcgplayer-cdn.tcgplayer.com/product/106990_200w.jpg,3,635,https://cpt.tcgcsv.com/QPS,2026-01-29T16:05:31.003,1,28/64,Rare,Water,80,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1WW] Water Gun (30+)
+<br>Does 30 damage plus 10 more damage for each Water Energy attached to Vaporeon but not used to pay for this attack's Energy cost. Extra Water energy after the 2nd doesn't count.",L,,1,21.64,25.42,9999.0,31.36,,1st Edition,
+106990,Vaporeon (28),Vaporeon 28,https://tcgplayer-cdn.tcgplayer.com/product/106990_200w.jpg,3,635,https://cpt.tcgcsv.com/QPS,2026-01-29T16:05:31.003,1,28/64,Rare,Water,80,Stage 1,"[2] Quick Attack (10+)
+<br>Flip a coin. If heads, this attack does 10 damage plus 20 more damage; if tails, this attack does 10 damage.","[1WW] Water Gun (30+)
+<br>Does 30 damage plus 10 more damage for each Water Energy attached to Vaporeon but not used to pay for this attack's Energy cost. Extra Water energy after the 2nd doesn't count.",L,,1,5.42,11.56,29.99,11.83,,Unlimited,
+106991,Venomoth (29),Venomoth 29,https://tcgplayer-cdn.tcgplayer.com/product/106991_200w.jpg,3,635,https://cpt.tcgcsv.com/RPS,2026-01-29T16:04:24.557,1,29/64,Rare,Grass,70,Stage 1,"[GG] Venom Powder (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused and Poisoned.",,R,F-30,,7.5,8.15,39.99,11.66,,1st Edition,"<strong>Pokémon Power: Shift</strong> Once during your turn <em>(before your attack)</em>, you may change the type of Venomoth to the type of any other Pokémon in play other than Colorless. This power can't be used if Venomoth is Asleep, Confused, or Paralyzed."
+106991,Venomoth (29),Venomoth 29,https://tcgplayer-cdn.tcgplayer.com/product/106991_200w.jpg,3,635,https://cpt.tcgcsv.com/RPS,2026-01-29T16:04:24.557,1,29/64,Rare,Grass,70,Stage 1,"[GG] Venom Powder (10)
+<br>Flip a coin. If heads, the Defending Pokémon is now Confused and Poisoned.",,R,F-30,,1.78,2.44,24.98,4.92,24.98,Unlimited,"<strong>Pokémon Power: Shift</strong> Once during your turn <em>(before your attack)</em>, you may change the type of Venomoth to the type of any other Pokémon in play other than Colorless. This power can't be used if Venomoth is Asleep, Confused, or Paralyzed."
+106992,Victreebel (30),Victreebel 30,https://tcgplayer-cdn.tcgplayer.com/product/106992_200w.jpg,3,635,https://cpt.tcgcsv.com/SPS,2025-11-26T05:31:29.58,1,30/64,Rare,Grass,80,Stage 2,"[G] Lure
+<br>If your opponent has any Benched Pokémon, choose 1 of them and switch it with his or her Active Pokémon.","[GG] Acid (20)
+<br>Flip a coin. If heads, the Defending Pokémon can't retreat during your opponent's next turn.",R,,2,7.69,12.26,579.6,12.52,49.99,1st Edition,
+106992,Victreebel (30),Victreebel 30,https://tcgplayer-cdn.tcgplayer.com/product/106992_200w.jpg,3,635,https://cpt.tcgcsv.com/SPS,2025-11-26T05:31:29.58,1,30/64,Rare,Grass,80,Stage 2,"[G] Lure
+<br>If your opponent has any Benched Pokémon, choose 1 of them and switch it with his or her Active Pokémon.","[GG] Acid (20)
+<br>Flip a coin. If heads, the Defending Pokémon can't retreat during your opponent's next turn.",R,,2,1.77,3.58,7.0,4.42,,Unlimited,
+106993,Vileplume (31),Vileplume 31,https://tcgplayer-cdn.tcgplayer.com/product/106993_200w.jpg,3,635,https://cpt.tcgcsv.com/TPS,2025-11-26T05:31:57.507,1,31/64,Rare,Grass,80,Stage 2,"[GGG] Petal Dance (40x)
+<br>Flip 3 coins. This attack does 40 damage times the number of heads. Vileplume is now Confused <em>(after doing damage)</em>.",,R,None,2,6.09,13.99,336.8,15.73,17.46,1st Edition,"<strong>Pokémon Power: Heal</strong> Once during your turn <em>(before your attack)</em>, you may flip a coin. If heads, remove 1 damage counter from 1 of your Pokémon. This power can't be used if Vileplume is Asleep, Confused, or Paralyzed."
+106993,Vileplume (31),Vileplume 31,https://tcgplayer-cdn.tcgplayer.com/product/106993_200w.jpg,3,635,https://cpt.tcgcsv.com/TPS,2025-11-26T05:31:57.507,1,31/64,Rare,Grass,80,Stage 2,"[GGG] Petal Dance (40x)
+<br>Flip 3 coins. This attack does 40 damage times the number of heads. Vileplume is now Confused <em>(after doing damage)</em>.",,R,None,2,2.85,4.78,9.04,7.05,,Unlimited,"<strong>Pokémon Power: Heal</strong> Once during your turn <em>(before your attack)</em>, you may flip a coin. If heads, remove 1 damage counter from 1 of your Pokémon. This power can't be used if Vileplume is Asleep, Confused, or Paralyzed."
+106994,Wigglytuff (32),Wigglytuff 32,https://tcgplayer-cdn.tcgplayer.com/product/106994_200w.jpg,3,635,https://cpt.tcgcsv.com/VPS,2022-12-18T06:09:58.093,1,32/64,Rare,Colorless,80,Stage 1,"[1] Lullaby
+<br>The Defending Pokémon is now Asleep.","[3] Do the Wave (10+)
+<br>Does 10 damage plus 10 more damage for each of your Benched Pokémon.",F,P-30,2,8.0,11.3,25.0,19.12,,1st Edition,
+106994,Wigglytuff (32),Wigglytuff 32,https://tcgplayer-cdn.tcgplayer.com/product/106994_200w.jpg,3,635,https://cpt.tcgcsv.com/VPS,2022-12-18T06:09:58.093,1,32/64,Rare,Colorless,80,Stage 1,"[1] Lullaby
+<br>The Defending Pokémon is now Asleep.","[3] Do the Wave (10+)
+<br>Does 10 damage plus 10 more damage for each of your Benched Pokémon.",F,P-30,2,2.22,4.98,8.06,5.45,,Unlimited,
+107598,Jungle Booster Box [1st Edition],Jungle Booster Box 1st Edition,https://tcgplayer-cdn.tcgplayer.com/product/107598_200w.jpg,3,635,https://cpt.tcgcsv.com/-2T,2017-07-22T16:01:42,1,,,,,,,,,,,,,,,,,
+107599,Jungle Booster Box [Unlimited Edition],Jungle Booster Box Unlimited Edition,https://tcgplayer-cdn.tcgplayer.com/product/107599_200w.jpg,3,635,https://cpt.tcgcsv.com/_2T,2017-07-22T16:01:48.937,1,,,,,,,,,,,,,,,,,
+138128,Jungle Booster Pack [1st Edition],Jungle Booster Pack 1st Edition,https://tcgplayer-cdn.tcgplayer.com/product/138128_200w.jpg,3,635,https://cpt.tcgcsv.com/Bg72,2017-07-22T16:01:57.99,1,,,,,,,,,,,446.0,580.0,800.0,437.78,,Normal,Each Jungle 1st Edition Booster Pack contains 11 random cards for Wizards of the Coast printed Jungle set.
+138129,Jungle Booster Pack [Unlimited Edition],Jungle Booster Pack Unlimited Edition,https://tcgplayer-cdn.tcgplayer.com/product/138129_200w.jpg,3,635,https://cpt.tcgcsv.com/Cg72,2017-07-22T16:02:06.05,1,,,,,,,,,,,299.0,309.25,1000.0,276.32,,Normal,Each Jungle Unlimited Edition Booster Pack contains 11 random cards for Wizards of the Coast printed Jungle set.
+234498,"Jungle Theme Deck - ""Power Reserve""",Jungle Theme Deck Power Reserve,https://tcgplayer-cdn.tcgplayer.com/product/234498_200w.jpg,3,635,https://cpt.tcgcsv.com/-PT2,2021-03-15T16:54:31.547,1,,,,,,,,,,,,,,,,,
+234499,"Jungle Theme Deck - ""Water Blast""",Jungle Theme Deck Water Blast,https://tcgplayer-cdn.tcgplayer.com/product/234499_200w.jpg,3,635,https://cpt.tcgcsv.com/_PT2,2024-01-25T14:54:54.847,1,,,,,,,,,,,599.99,599.99,599.99,241.0,,Normal,
