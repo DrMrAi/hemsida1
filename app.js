@@ -1,15 +1,20 @@
 const express = require('express');
 const path = require('path');
-
+//require('dotenv').config({ path: path.join(__dirname, '../.env') }); Det här funkar bara om .env ligger i mappen ovanför app.js
+//eftersom app.js är direkt i foldern för projektet bör inte .env ligga ovanför då den då inte längre är direkt kopplad till detta
+require('dotenv').config();
 const app = express();
 const port = 3000;
+console.log('Password type: ', typeof process.env.DB_PASSWORD);
 
 // Serve static files (CSS, images, JS)
 app.use(express.static('public'));
 
 // Mount API routes
 const apiCsv = require('./routes/apicsv');
-app.use('/api', apiCsv);
+const apiSql = require('./routes/apisql')
+//app.use('/api', apiCsv);
+app.use('/api', apiSql)
 
 // Dynamic product page
 app.get('/product/:id', (req, res) => {
