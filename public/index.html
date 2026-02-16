@@ -69,15 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     // Replace "200w" with "400w" in imageUrl
-                    const highResImageUrl = product.imageUrl ? product.imageUrl.replace('200w', '400w') : '';
+                    const highResImageUrl = product.image_url ? product.image_url.replace('200w', '400w') : '';
 
                     // Card content
                     card.innerHTML = `
                         <img src="${highResImageUrl}" alt="${product.name}">
                         <h3>${product.name}</h3>
-                        <p>HP: ${product.extHP || '-'}</p>
-                        <p>Rarity: ${product.extRarity || '-'}</p>
-                        <p class="price">${parseFloat(product.lowPrice || 0).toFixed(2)} kr</p>
+                        <p>HP: ${product.ext_hp || '-'}</p>
+                        <p>Rarity: ${product.ext_rarity || '-'}</p>
+                        <p class="price">${parseFloat(product.price || 0).toFixed(2)} kr</p>
                         <button onclick="event.stopPropagation(); window.location.href='/product/${product.productId}'">Köp</button>
                     `;
 
