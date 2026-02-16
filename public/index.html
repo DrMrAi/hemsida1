@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('/api/products')
         .then(res => res.json())
         .then(data => {
-
             function renderProducts(products) {
                 productsContainer.innerHTML = '';
                 products.forEach(product => {
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Make entire card clickable
                     card.addEventListener('click', () => {
-                        window.location.href = `/product/${product.productId}`;
+                        window.location.href = `/product/${product.product_id}`;
                     });
 
                     // Replace "200w" with "400w" in imageUrl
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>HP: ${product.ext_hp || '-'}</p>
                         <p>Rarity: ${product.ext_rarity || '-'}</p>
                         <p class="price">${parseFloat(product.price || 0).toFixed(2)} kr</p>
-                        <button onclick="event.stopPropagation(); window.location.href='/product/${product.productId}'">Köp</button>
+                        <button onclick="event.stopPropagation(); window.location.href='/product/${product.product_id}'">Köp</button>
                     `;
 
                     productsContainer.appendChild(card);
@@ -92,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sortSelect.addEventListener('change', () => {
                 const val = sortSelect.value;
                 let sorted = [...data];
-                if(val === 'lowPrice') sorted.sort((a,b) => parseFloat(a.lowPrice)-parseFloat(b.lowPrice));
-                else if(val === 'highPrice') sorted.sort((a,b) => parseFloat(b.lowPrice)-parseFloat(a.lowPrice));
+                if(val === 'lowPrice') sorted.sort((a,b) => parseFloat(a.price)-parseFloat(b.price));
+                else if(val === 'highPrice') sorted.sort((a,b) => parseFloat(b.price)-parseFloat(a.price));
                 else if(val === 'name') sorted.sort((a,b) => a.name.localeCompare(b.name));
                 renderProducts(sorted);
             });

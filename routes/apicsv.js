@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const Papa = require('papaparse');
-
+// Allt det här var för att läsa in data för en lokal CSV fil
 const csvFilePath = path.join(__dirname, '../data/sorted_by_name.csv');
 
 // GET all products
@@ -28,5 +28,7 @@ router.get('/products/:id', (req, res) => {
         res.json(product);
     });
 });
+
+
 
 module.exports = router;
