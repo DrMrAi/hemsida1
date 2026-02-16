@@ -4,8 +4,7 @@ const path = require('path');
 //eftersom app.js är direkt i foldern för projektet bör inte .env ligga ovanför då den då inte längre är direkt kopplad till detta
 require('dotenv').config();
 const app = express();
-const port = 3000;
-console.log('Password type: ', typeof process.env.DB_PASSWORD);
+const PORT = process.env.PORT || 3000;
 
 // Serve static files (CSS, images, JS)
 app.use(express.static('public'));

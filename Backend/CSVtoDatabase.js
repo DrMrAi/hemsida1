@@ -1,5 +1,5 @@
 // File: CSVtoDatabase.js
-
+skapar error!
 const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
