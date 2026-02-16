@@ -20,6 +20,15 @@ app.get('/product/:id', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'product.html'));
 });
 
+//Login page
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/signup', (req, res) => {
+    res.redirect('/signup.html');
+});
+
 // Homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -30,3 +39,5 @@ app.get('/test', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+

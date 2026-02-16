@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-const path = require('path');
-const Papa = require('papaparse');
 const { Pool } = require('pg');
+const crypto = require('crypto')
+
+
+function hashPassword(password) {
+    return crypto.createHash('sha256').update(password).digest('hex');
+}
 
 const pool = new Pool({
     user: process.env.DB_USER,
@@ -116,6 +119,7 @@ router.get('/orders/:userID/:order_id', async (req, res) => {
         }
         res.json(orderlines.rows)
     } catch(err) {
+        console.log(crypto.createHash('sha256').update(testar123).digest('hex'));
         res.status(500).json({ error: 'Database error'})
     }
 });
@@ -130,4 +134,64 @@ router.put('/:order_id', async (req, res)=> {
         res.status(500).json({ error: 'Database error'})
     }
 });
+
+//For login
+router.post('/login', express.json(), async (req, res) => {
+    try {
+        const { email, password } = req.body;
+         if (!email || !password) {
+            return res.status(400).json({ success: false, error: 'Email and password are required' });
+        }
+        const userResult = await pool.query('SELECT * FROM users WHERE email=$1', [email]);
+        if (userResult.rows.length === 0) {
+            return res.status(401).json({ success: false, error: 'Invalid credentials' });
+        }
+        const user = userResult.rows[0];
+        const hashed = hashPassword(password);
+        const passwordMatch = (hashed === user.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ success: false, error: 'Invalid credentials' });
+        }
+        res.json({ success: true, user: { id: user.id, email: user.email } });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+router.post('/signup', express.json(), async (req, res) => {
+    const { email, password, name} = req.body;
+
+    // Basic validation
+    if (!email || !password || !name) {
+        return res.status(400).json({ success: false, message: 'Email, password and name are required' });
+    }
+
+    try {
+        // Check if user already exists
+        const existingUser = await pool.query(
+            'SELECT * FROM users WHERE email=$1',
+            [email]
+        );
+
+        if (existingUser.rows.length > 0) {
+            return res.status(409).json({ success: false, message: 'Email already registered' });
+        }
+
+        // Insert new user with hashed password
+        const hashedPassword = hashPassword(password);
+        const newUser = await pool.query(
+            'INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING *',
+            [email, hashedPassword, name]
+        );
+
+        // Respond with success
+        res.json({ success: true, user: newUser.rows[0] });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Database error' });
+    }
+});
+
 module.exports = router;
