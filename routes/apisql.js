@@ -23,6 +23,37 @@ router.get('/products', async (req, res) => {
     }
 });
 
+//Get all products sorted ascending
+router.get('/products/ascending/:sortType', async(req, res) => {
+    try {
+        const sortType = req.params.sortType;
+        const allowedSort  = ['price', 'name']
+        if (!allowedSort.includes(sortType)) {
+            return res.status(400).json({ error: 'Invalid sort type' });
+        }
+        const products = await pool.query(`SELECT * FROM products WHERE ${sortType} IS NOT NULL ORDER BY ${sortType}`)
+        res.json(products.rows)
+    } catch(err) {
+        console.log(err)
+        res.status(500).json({error: 'Database error'})
+    }
+});
+//Get all products sorted descending
+router.get('/products/descending/:sortType', async(req, res) => {
+    try {
+        const sortType = req.params.sortType;
+        const allowedSort  = ['price', 'name']
+        if (!allowedSort.includes(sortType)) {
+            return res.status(400).json({ error: 'Invalid sort type' });
+        }
+        const products = await pool.query(`SELECT * FROM products WHERE ${sortType} IS NOT NULL ORDER BY ${sortType} DESC`)
+        res.json(products.rows)
+    } catch(err) {
+        console.log(err)
+        res.status(500).json({error: 'Database error'})
+    }
+});
+
 // Get single product from server
 router.get('/products/:id', async (req, res) => {
     console.log('Testar med id= ', req.params.id);
@@ -87,5 +118,16 @@ router.get('/orders/:userID/:order_id', async (req, res) => {
     } catch(err) {
         res.status(500).json({ error: 'Database error'})
     }
-})
+});
+//Create a new orderline
+router.put('/:order_id', async (req, res)=> {
+    const {user, product, amount, price, orderID} = req.body;
+    try {
+        const newOrderLine = await pool.query(
+            'INSERT INTO order_lines (user_id, product_id, amount, price_at_purchase, order_id) VALUES ($1, $2, $3, $4, $5)', [user, product, amount, price, orderID]
+        );
+    } catch(err) {
+        res.status(500).json({ error: 'Database error'})
+    }
+});
 module.exports = router;
