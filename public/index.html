@@ -25,6 +25,10 @@
             </div>
             <button class="login-btn"></button>
         </div>
+        <div class="basket-inner">
+            <div></div> <!--ta bort plsss lös på ett bättre sätt-->
+            <button class="basket-btn">Basket</button>
+        </div>
     </header>
 
     <nav class="category-nav">
@@ -85,7 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Make entire card clickable
                     card.addEventListener('click', () => {
-                        window.location.href = `/product/${product.product_id}`;
+                        const params = new URLSearchParams(window.location.search);
+                        const id = params.get('id');
+                        window.location.href = `/product/${product.product_id}?id=${id}`;
                     });
 
                     // Replace "200w" with "400w" in imageUrl

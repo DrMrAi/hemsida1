@@ -12,7 +12,7 @@ function hashPassword(password) {
 // Get all products from server
 router.get('/products', async (req, res) => {
     try {
-        const products = await pool.query('SELECT * FROM products');
+        const products = await pool.query('SELECT * FROM products LIMIT 100');
         res.json(products.rows);
     } catch(err) {
         res.status(500).json({error: 'Database error'})
@@ -117,6 +117,36 @@ router.get('/orders/:userID/:order_id', async (req, res) => {
         res.status(500).json({ error: 'Database error'})
     }
 });
+
+//Create order if non existing
+router.post('/create_order', express.json(), async (req, res) => {
+    const { user_id } = req.body;
+    console.log("useris", user_id)
+    try {
+        // Check if user already exists
+        const existingOrder = await pool.query(
+            'SELECT status FROM orders o WHERE user_id = $1  AND status = $2',
+            [user_id, 'In basket']
+        );
+        if (existingOrder.rows.length > 0) {
+            console.log("i vaske")
+            return res.json({ success: true});
+        }
+        console.log("insert")
+        const newUser = await pool.query(
+            'INSERT INTO orders (user_id, status) VALUES ($1, $2);',
+            [user_id, 'In basket']
+        );
+
+        // Respond with success
+        res.json({ success: true });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Database error' });
+    }
+});
+
 //Create a new orderline
 router.put('/:order_id', async (req, res)=> {
     const {user, product, amount, price, orderID} = req.body;

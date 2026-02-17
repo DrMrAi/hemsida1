@@ -72,6 +72,14 @@ body {
     align-items: center;
 }
 
+.basket-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo h1 {
     margin: 0;
     font-size: 2.8rem;
@@ -96,6 +104,21 @@ body {
 }
 
 .login-btn:hover {
+    background: var(--pokemon-blue);
+    border-color: var(--pokemon-blue);
+}
+
+.basket-btn {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid #334155;
+    color: var(--text-light);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.basket-btn:hover {
     background: var(--pokemon-blue);
     border-color: var(--pokemon-blue);
 }
