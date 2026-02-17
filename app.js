@@ -3,8 +3,34 @@ const path = require('path');
 //require('dotenv').config({ path: path.join(__dirname, '../.env') }); Det här funkar bara om .env ligger i mappen ovanför app.js
 //eftersom app.js är direkt i foldern för projektet bör inte .env ligga ovanför då den då inte längre är direkt kopplad till detta
 require('dotenv').config();
+
+//This is for the cookies
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+const pool = require('./db'); // <-- import pool
+
 const app = express();
 const port = process.env.PORT || 3000;
+
+//session 
+app.use(session({
+    store: new pgSession({
+        pool: pool, // Use the existing pool
+        tableName: 'session', // Optional, defaults to 'session'
+        createTableIfMissing: true, // Automatically create the session table if it doesn't exist
+        pruneSessionInterval: 60 * 60 // Optional: prune expired sessions every hour
+    }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { 
+        secure: false,
+        httpOnly: false,
+        maxAge: 24 * 60 * 60 * 1000 // 10 day
+     } 
+}));
+
+
 
 // Serve static files (CSS, images, JS)
 app.use(express.static('public'));
@@ -27,6 +53,13 @@ app.get('/login', (req, res) => {
 
 app.get('/signup', (req, res) => {
     res.redirect('/signup.html');
+});
+
+app.get('/profile', (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+    res.sendFile(path.join(__dirname, 'public', 'profile.html'));
 });
 
 // Homepage

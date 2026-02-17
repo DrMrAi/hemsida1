@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Min Profil - Pokémarket</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .order-card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px;
+            background-color: #fafafa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .order-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: #f0f0f0;
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .order-id {
+            font-weight: bold;
+            color: #333;
+        }
+        .order-date {
+            color: #666;
+            font-size: 14px;
+        }
+        .order-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        .order-details.show {
+            display: block;
+        }
+        .order-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        .error {
+            color: #d32f2f;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+        .no-orders {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <header class="top-header">
+        <div class="header-inner">
+            <div class="logo">
+                <h1>Pokémarket</h1>
+                <p>Samla. Köp. Lev.</p>
+            </div>
+            <button class="login-btn"></button>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <button class="active">Mina Beställningar</button>
+    </nav>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+    <div id="content">
+        <div class="loading">Loading your orders...</div>
+    </div>
+</main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.querySelector('.login-btn');
+            fetch('/api/me')
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Login state:', data);
+
+                    if (data.logged_in) {
+                        loginBtn.textContent = 'Min profil';
+                        loginBtn.onclick = () => {
+                            window.location.href = `/profile`;
+                        };
+                    } else {
+                        loginBtn.textContent = 'Logga in';
+                        loginBtn.onclick = () => {
+                            window.location.href = `/login`;
+                        };
+                    }
+                })
+                .catch(err => {
+                    console.error('ME error:', err);
+                    loginBtn.textContent = 'Logga in';
+                });
+            
+            loadOrders();
+        });
+
+        async function loadOrders() {
+            try {
+                // Check if user is logged in
+                const meResponse = await fetch('/api/me');
+                console.log('Checking login status, response:', meResponse);
+                const meData = await meResponse.json();
+                console.log('User data:', meData);
+                if (!meData.logged_in) {
+                    document.getElementById('content').innerHTML = '<div class="error">Please log in to view your orders</div>';
+                    return;
+                }
+
+                const userID = meData.user.id;
+                console.log('Logged in user ID:', userID, 'Compered to session user ID:', meData.user.id);
+
+                // Fetch user's orders
+                const ordersResponse = await fetch(`/api/orders/${userID}`);
+                console.log('Fetching orders, response:', ordersResponse);
+                
+                if (!ordersResponse.ok) {
+                    console.log('Failed to fetch orders:', ordersResponse.status, ordersResponse.statusText);
+                    throw new Error('Failed to fetch orders ordersRepson.ok not ok');
+                }
+
+                const orders = await ordersResponse.json();
+
+                if (orders.length === 0) {
+                    document.getElementById('content').innerHTML = '<div class="no-orders">You have no orders yet</div>';
+                    return;
+                }
+
+                // Build orders HTML
+                let ordersHTML = '<div class="orders-list">';
+                
+                for (const order of orders) {
+                    ordersHTML += `
+                        <div class="order-card" onclick="toggleDetails(this, ${order.id}, ${userID})">
+                            <div class="order-header">
+                                <span class="order-id">Order #${order.id}</span>
+                                <span class="order-date">${new Date(order.created_at).toLocaleDateString()}</span>
+                            </div>
+                            <div class="order-details" id="details-${order.id}"></div>
+                        </div>
+                    `;
+                }
+
+                ordersHTML += '</div>';
+                document.getElementById('content').innerHTML = ordersHTML;
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('content').innerHTML = `<div class="error">Error loading orders: ${err.message}</div>`;
+            }
+        }
+
+        async function toggleDetails(element, orderId, userID) {
+            const detailsElement = document.getElementById(`details-${orderId}`);
+            
+            if (detailsElement.classList.contains('show')) {
+                detailsElement.classList.remove('show');
+                return;
+            }
+
+            if (detailsElement.innerHTML === '') {
+                try {
+                    const response = await fetch(`/api/orders/${userID}/${orderId}`);
+                    if (!response.ok) throw new Error('Failed to fetch order details');
+                    
+                    const orderLines = await response.json();
+                    
+                    let detailsHTML = '<div style="font-weight: bold; margin-bottom: 10px;">Order Items:</div>';
+                    orderLines.forEach(line => {
+                        detailsHTML += `
+                            <div class="order-line">
+                                <span>Product #${line.product_id} - Qty: ${line.amount}</span>
+                                <span>$${parseFloat(line.price_at_purchase).toFixed(2)}</span>
+                            </div>
+                        `;
+                    });
+                    
+                    detailsElement.innerHTML = detailsHTML;
+                } catch (err) {
+                    detailsElement.innerHTML = `<div class="error">Error loading details: ${err.message}</div>`;
+                }
+            }
+
+            detailsElement.classList.add('show');
+        }
+
+        // Load orders when page loads
+        loadOrders();
+    </script>
+</body>
+</html>

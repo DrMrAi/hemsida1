@@ -1,21 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { Pool } = require('pg');
+const bcrypt = require('bcrypt');
 const crypto = require('crypto')
-
+const pool = require('../db');
 
 function hashPassword(password) {
     return crypto.createHash('sha256').update(password).digest('hex');
 }
 
-const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: parseInt(process.env.DB_PORT, 10) || 5432,
-    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false
-})
+
 // Get all products from server
 router.get('/products', async (req, res) => {
     try {
@@ -77,7 +70,7 @@ router.put('/products/:id', async (req, res) => {
     const {name, price, stock} = req.body;
     try {
         const updatedProduct = await pool.query(
-            'UPDATE products SET name = $1, price=$2, stock=$3 WHERE id=$4 RETURNING *', [name, price, stock, req.params.id]
+            'UPDATE products SET name = $1, price=$2, stock=$3 WHERE product_id=$4 RETURNING *', [name, price, stock, req.params.id]
         );
         if (updatedProduct.rows.length === 0) {
             return res.status(404).json({ error: 'Product not found'});
@@ -96,15 +89,17 @@ router.post('/', async (req, res) => {
 */
 
 router.get('/orders/:userID', async (req, res) => {
+    console.log('Fetching orders for user ID:', req.params.userID);
     try {
         const orders = await pool.query(
-            'SELECT * FROM orders WHERE userid=$1', [req.params.userID]
+            'SELECT * FROM orders WHERE user_id=$1', [req.params.userID]
         );
-        if (orders.rows.length === 0) {
-            return res.status(404).json({ error: 'No orders found'})
-        }
+        //if (orders.rows.length === 0) {
+        //    return res.status(404).json({ error: 'No orders found'})
+        //}
         res.json(orders.rows)
     } catch(err) {
+        console.log(err)
         res.status(500).json({ error: 'Database error'})
     }
 });
@@ -119,7 +114,6 @@ router.get('/orders/:userID/:order_id', async (req, res) => {
         }
         res.json(orderlines.rows)
     } catch(err) {
-        console.log(crypto.createHash('sha256').update(testar123).digest('hex'));
         res.status(500).json({ error: 'Database error'})
     }
 });
@@ -147,12 +141,18 @@ router.post('/login', express.json(), async (req, res) => {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
         const user = userResult.rows[0];
-        const hashed = hashPassword(password);
-        const passwordMatch = (hashed === user.password);
+        const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
-        res.json({ success: true, user: { id: user.id, email: user.email } });
+        req.session.user = { id: user.user_id, email: user.email }; //store login info in session
+        req.session.save(err => {
+            if (err) {
+                console.error('Session save error:', err);
+                return res.status(500).json({ success: false, error: 'Session error' });
+            }
+            res.json({ success: true, user: { id: user.user_id, email: user.email } });
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Database error' });
@@ -179,7 +179,7 @@ router.post('/signup', express.json(), async (req, res) => {
         }
 
         // Insert new user with hashed password
-        const hashedPassword = hashPassword(password);
+        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await pool.query(
             'INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING *',
             [email, hashedPassword, name]
@@ -193,5 +193,16 @@ router.post('/signup', express.json(), async (req, res) => {
         res.status(500).json({ success: false, message: 'Database error' });
     }
 });
+
+//Get if user is logged in
+router.get('/me', async (req, res) => {
+    if (req.session.user) {
+        res.json({ logged_in: true, user: req.session.user });
+    } else {
+        res.json({ logged_in: false });
+    }
+});
+
+
 
 module.exports = router;
