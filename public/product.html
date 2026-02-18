@@ -23,6 +23,12 @@
         <div class="basket-inner">
             <div></div> <!--ta bort plsss lös på ett bättre sätt-->
             <button class="basket-btn">Basket</button>
+            <div class="basket-banner">
+                <h3>Your Basket</h3>
+                <ul id="shopping_basket"> </ul>
+
+                <button class="close-btn">Close</button>
+            </div>
         </div>
     </header>
 
@@ -72,25 +78,20 @@ function addToCart() {
     const name = document.getElementById("product-name").textContent;
     const price = parseFloat(document.getElementById("product-price").textContent);
     const qty = parseInt(document.getElementById("qty").value);
-
+    const params = new URLSearchParams(window.location.search);
+    const user_id = params.get('id');
+    const product_id = window.location.pathname.split("/").pop();
     cart.push({ name, price, qty });
-    renderCart();
-}
+    
+    fetch('/api/order_line', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: user_id, product: product_id, amount: qty, price: price})
+                })
+    //renderCart();
+    }
 
-function renderCart() {
-    const list = document.getElementById("cart-items");
-    list.innerHTML = "";
-    let total = 0;
 
-    cart.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.name} x${item.qty} - ${(item.price * item.qty).toFixed(2)} kr`;
-        list.appendChild(li);
-        total += item.price * item.qty;
-    });
-
-    document.getElementById("total-price").textContent = "Total: " + total.toFixed(2) + " kr";
-}
 
 // --- Fetch product data dynamically ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -116,11 +117,51 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".product-page").innerHTML = "<p>Product not found.</p>";
         });
 });
-</script>
-<script>
     document.querySelector('.login-btn').addEventListener('click', ()=> {
         window.location.href = '/login';
     });
+
+document.querySelector('.basket-btn').addEventListener('click', () => {
+    const banner = document.querySelector('.basket-banner');
+    banner.classList.add('active');
+    renderCart();
+});
+
+function renderCart() {
+const params = new URLSearchParams(window.location.search);
+const user_id = params.get('id');
+fetch(`/api/current_order/${user_id}`)
+    .then(res => {
+        if (!res.ok) throw new Error("Product not found");
+        return res.json();
+    })
+    .then(products => {
+        console.log("Yippie", products);
+        const list = document.getElementById("shopping_basket");;
+        list.innerHTML = "";
+        let total = 0;
+
+        products.forEach(item => {
+            console.log("item", item)
+            const li = document.createElement("li");
+            li.textContent = `${item.name} x${item.amount} - ${(item.price * item.amount).toFixed(2)} kr`;
+            list.appendChild(li);
+            total += item.price * item.qty;
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        //LÄGG TILL ERROR KANSKE??
+    });
+}
+
+document.querySelector('.close-btn').addEventListener('click', (e) => {
+    if (e.target.classList.contains('close-btn')) {
+        const banner = document.querySelector('.basket-banner');
+        banner.classList.remove('active');
+    }
+});
+
 </script>
 
 </body>

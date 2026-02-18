@@ -12,6 +12,8 @@ const pool = require('./db'); // <-- import pool
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
+
 //session 
 app.use(session({
     store: new pgSession({

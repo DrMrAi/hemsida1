@@ -125,10 +125,11 @@
         .then(data => {
             if(data.success) {
                 user_id = data.user.id
+                console.log(user_id)
                 fetch('/api/create_order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user_id })
+                    body: JSON.stringify({ user_id: user_id })
                 })
                 window.location.href = `/?id=${user_id}`;
             } else {
