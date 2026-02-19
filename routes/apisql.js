@@ -232,6 +232,17 @@ router.post('/signup', express.json(), async (req, res) => {
     }
 });
 
+//logout route
+router.post('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.error('Session destroy error:', err);
+            return res.status(500).json({ success: false, error: 'Failed to logout' });
+        }
+        res.json({ success: true });
+    });
+});
+
 //Get if user is logged in, if they are it returns logged_in(bool) id: user.user_id, email: user.email, see profile.html line 132-139 for how to use
 router.get('/me', async (req, res) => {
     if (req.session.user) {

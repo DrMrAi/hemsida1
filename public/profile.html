@@ -41,11 +41,17 @@
             fetch('/api/me')
                 .then(res => res.json())
                 .then(data => {
-                    console.log('Login state:', data);
-
                     if (data.logged_in) {
-                        loginBtn.textContent = 'Min profil';
+                        loginBtn.textContent = 'Logga ut';
                         loginBtn.onclick = () => {
+                            fetch('/api/logout', { method: 'POST' })
+                                .then(() => {
+                                    window.location.href = `/`;
+                                })
+                                .catch(err => {
+                                    console.error('Logout error:', err);
+                                    alert('Error logging out. Please try again.');
+                                });
                             window.location.href = `/profile`;
                         };
                     } else {

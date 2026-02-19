@@ -2,24 +2,39 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>Pokémarket - Product</title>
+    <title>Pokémarket - Skapa konto</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<header class="top-header">
-    <div class="header-inner">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <header class="top-header">
+        <div class="header-inner">
         <div class="logo">
                 <a href="/" class="logo-link">
                     <h1>Pokémarket</h1>
                     <p>Samla. Köp. Lev. hej hej</p>
                 </a>
             </div>
+        <button class="login-btn"></button>
+    </div>
+    <div class="basket-inner">
+        <div></div>
+        <button class="basket-btn">Basket</button>
     </div>
 </header>
-<body>
 
-<div class="auth-container">
+    <nav class="category-nav">
+        <button class="active">Alla</button>
+    </nav>
+</section>
+
+
+<main class="container">
+    <div class="auth-container">
     <h2>Skapa konto</h2>
     <form id="signupForm">
         <div class="form-group">
@@ -45,8 +60,27 @@
         Redan registrerad? <a href="/login">Logga in här</a>
     </div>
 </div>
+</main>
 
 <script>
+// update login button state like on index
+const loginBtn = document.querySelector('.login-btn');
+fetch('/api/me')
+    .then(res => res.json())
+    .then(data => {
+        if (data.logged_in) {
+            loginBtn.textContent = 'Min profil';
+            loginBtn.onclick = () => { window.location.href = `/profile`; };
+        } else {
+            loginBtn.textContent = 'Logga in';
+            loginBtn.onclick = () => { window.location.href = `/login`; };
+        }
+    })
+    .catch(err => {
+        console.error('ME error:', err);
+        loginBtn.textContent = 'Logga in';
+    });
+
 document.getElementById('signupForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const messageDiv = document.getElementById('message');
