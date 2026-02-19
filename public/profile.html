@@ -130,20 +130,16 @@
             try {
                 // Check if user is logged in
                 const meResponse = await fetch('/api/me');
-                console.log('Checking login status, response:', meResponse);
                 const meData = await meResponse.json();
-                console.log('User data:', meData);
                 if (!meData.logged_in) {
                     document.getElementById('content').innerHTML = '<div class="error">Please log in to view your orders</div>';
                     return;
                 }
 
                 const userID = meData.user.id;
-                console.log('Logged in user ID:', userID, 'Compered to session user ID:', meData.user.id);
 
                 // Fetch user's orders
                 const ordersResponse = await fetch(`/api/orders/${userID}`);
-                console.log('Fetching orders, response:', ordersResponse);
                 
                 if (!ordersResponse.ok) {
                     console.log('Failed to fetch orders:', ordersResponse.status, ordersResponse.statusText);

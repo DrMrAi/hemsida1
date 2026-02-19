@@ -78,8 +78,7 @@ function addToCart() {
     const name = document.getElementById("product-name").textContent;
     const price = parseFloat(document.getElementById("product-price").textContent);
     const qty = parseInt(document.getElementById("qty").value);
-    const params = new URLSearchParams(window.location.search);
-    const user_id = params.get('id');
+    const user_id = user.user_id ?? null; //Get ID from session and if not logged in, set to null
     const product_id = window.location.pathname.split("/").pop();
     cart.push({ name, price, qty });
     
@@ -96,7 +95,28 @@ function addToCart() {
 // --- Fetch product data dynamically ---
 document.addEventListener('DOMContentLoaded', () => {
     const productId = window.location.pathname.split("/").pop();
+    const loginBtn = document.querySelector('.login-btn');
+    fetch('/api/me')
+        .then(res => res.json())
+        .then(data => {
+            console.log('Login state:', data);
 
+            if (data.logged_in) {
+                loginBtn.textContent = 'Min profil';
+                loginBtn.onclick = () => {
+                    window.location.href = `/profile`;
+                };
+            } else {
+                loginBtn.textContent = 'Logga in';
+                loginBtn.onclick = () => {
+                    window.location.href = `/login`;
+                };
+            }
+        })
+        .catch(err => {
+            console.error('ME error:', err);
+            loginBtn.textContent = 'Logga in';
+        });
     fetch(`/api/products/${productId}`)
         .then(res => {
             if (!res.ok) throw new Error("Product not found");
