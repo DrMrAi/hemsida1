@@ -52,7 +52,7 @@ router.get('/products/descending/:sortType', async(req, res) => {
 
 // Get single product from server
 router.get('/products/:id', async (req, res) => {
-    console.log('Testar med id= ', req.params.id);
+        console.log('Testar med id= ', req.params.id);
     try {
         const product = await pool.query('SELECT * FROM products WHERE product_id=$1', [req.params.id]);
         if (product.rows.length ===0){
@@ -92,11 +92,12 @@ router.get('/orders/:userID', async (req, res) => {
     console.log('Fetching orders for user ID:', req.params.userID);
     try {
         const orders = await pool.query(
-            'SELECT * FROM orders WHERE user_id=$1', [req.params.userID]
+            'SELECT * FROM orders WHERE user_id=$1 AND status!=$2', [req.params.userID, 'In basket']
         );
         //if (orders.rows.length === 0) {
         //    return res.status(404).json({ error: 'No orders found'})
         //}
+        console.log(orders.rows)
         res.json(orders.rows)
     } catch(err) {
         console.log(err)
@@ -124,7 +125,7 @@ router.get('/current_order/:userID', async (req, res) => {
 
 //Create order if non existing
 router.post('/create_order', express.json(), async (req, res) => {
-    console.log("aaa", req.body)
+        console.log("aaa", req.body)
     const { user_id } = req.body;
     console.log("useris", user_id)
     try {
@@ -231,7 +232,7 @@ router.post('/signup', express.json(), async (req, res) => {
     }
 });
 
-//Get if user is logged in
+//Get if user is logged in, if they are it returns logged_in(bool) id: user.user_id, email: user.email, see profile.html line 132-139 for how to use
 router.get('/me', async (req, res) => {
     if (req.session.user) {
         res.json({ logged_in: true, user: req.session.user });

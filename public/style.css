@@ -383,3 +383,10 @@ body {
 .close-btn:hover {
     border-color: white;
 }
+
+.logo-link,
+.logo-link h1 {
+    text-decoration: none;
+    color: var(--pokemon-yellow);
+    display: block;
+}
