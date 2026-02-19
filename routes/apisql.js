@@ -114,7 +114,7 @@ router.get('/current_order/:userID', async (req, res) => {
             order_id = (SELECT order_id FROM orders WHERE user_id=$1 AND status = 'In basket')`, [req.params.userID]
         );
         if (orderlines.rows.length === 0){
-            return res.status(404).json({ error: 'No info found for the order'})
+            return res.json(orderlines.rows)
         }
         console.log('laa')
         res.json(orderlines.rows)
@@ -274,6 +274,19 @@ router.get('/me', async (req, res) => {
         res.json({ logged_in: true, user: req.session.user });
     } else {
         res.json({ logged_in: false });
+    }
+});
+
+router.put('/buy_basket', async (req, res)=> {
+    const {user} = req.body;
+    console.log('rrrrrrrr')
+    try {
+        console.log('here', user)
+        const updateOrderLine = await pool.query(
+                `UPDATE orders SET status = 'Sent' WHERE user_id = $1 AND status = 'In basket'`, [user]
+            );
+    } catch(err) {
+        res.status(500).json({ error: 'Database error'})
     }
 });
 
