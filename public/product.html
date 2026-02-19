@@ -76,19 +76,25 @@
 // --- Cart functionality ---
 let cart = [];
 
-function addToCart() {
+async function addToCart() {
     const name = document.getElementById("product-name").textContent;
     const price = parseFloat(document.getElementById("product-price").textContent);
     const qty = parseInt(document.getElementById("qty").value);
-    const user_id = user.user_id ?? null; //Get ID from session and if not logged in, set to null
+    const user = await getUser();
+    const user_id = user ? user.id : null;
+    console.log("Received user_id from getUser():", user_id);
+    console.log("user_id in addToCart:", user_id);
+    console.log("Received ID from /api/me:", user_id);
+        
+    console.log("Adding to cart:", { name, price, qty, user_id });
     const product_id = window.location.pathname.split("/").pop();
     cart.push({ name, price, qty });
     
     fetch('/api/order_line', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user: user_id, product: product_id, amount: qty, price: price})
-                })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user: user_id, product: product_id, amount: qty, price: price})
+    });
     //renderCart();
     }
 
@@ -149,9 +155,12 @@ document.querySelector('.basket-btn').addEventListener('click', () => {
     renderCart();
 });
 
-function renderCart() {
+async function renderCart() {
 const params = new URLSearchParams(window.location.search);
-const user_id = params.get('id');
+const user = await getUser(); //Get user ID from session or set to null if not logged in
+const user_id = user ? user.id : null;
+console.log("Received user_id from getUser():", user_id);
+console.log("user_id in renderCart:", user_id);
 fetch(`/api/current_order/${user_id}`)
     .then(res => {
         if (!res.ok) throw new Error("Product not found");
@@ -175,6 +184,13 @@ fetch(`/api/current_order/${user_id}`)
         console.error(err);
         //LÄGG TILL ERROR KANSKE??
     });
+}
+
+async function getUser() {
+    const response = await fetch('/api/me');
+    const data = await response.json();
+    console.log("Received data from /api/me: for function getUser", data);
+    return data.user;
 }
 
 document.querySelector('.close-btn').addEventListener('click', (e) => {
