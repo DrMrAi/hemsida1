@@ -109,7 +109,7 @@ router.get('/current_order/:userID', async (req, res) => {
     console.log('heeee')
     try {
         const orderlines = await pool.query(
-            `SELECT order_lines.amount, products.name, products.price  FROM order_lines 
+            `SELECT order_lines.amount, products.name, products.price, products.product_id  FROM order_lines 
             INNER JOIN products ON order_lines.product_id = products.product_id WHERE user_id=$1 AND 
             order_id = (SELECT order_id FROM orders WHERE user_id=$1 AND status = 'In basket')`, [req.params.userID]
         );
@@ -158,10 +158,35 @@ router.post('/order_line', async (req, res)=> {
     const {user, product, amount, price} = req.body;
     console.log('haha', user, product, amount, price)
     try {
-        const newOrderLine = await pool.query(
-            `INSERT INTO order_lines (user_id, product_id, amount, price_at_purchase, order_id) VALUES ($1, $2, $3, $4,  
-            (SELECT order_id from orders where user_id = $1 and status = 'In basket'))`, [user, product, amount, price]
-        );
+        const exsitingOrderLine = await pool.query(
+            `select * from order_lines where 
+            product_id = $2 and user_id = $1 and 
+            order_id = (SELECT order_id from orders where user_id = $1 and status = 'In basket')`, [user, product]
+        )
+        if (exsitingOrderLine.rows.length > 0) {
+            const updateOrderLine = await pool.query(
+                `UPDATE order_lines SET amount = amount + $3 WHERE product_id = $2 AND user_id = $1 AND 
+                order_id = (SELECT order_id FROM orders WHERE user_id = $1 AND status = 'In basket')`, [user, product, amount]
+            );
+        } else if (exsitingOrderLine.rows.length === 0) {
+            const newOrderLine = await pool.query(
+                `INSERT INTO order_lines (user_id, product_id, amount, price_at_purchase, order_id) VALUES ($1, $2, $3, $4,  
+                (SELECT order_id from orders where user_id = $1 and status = 'In basket'))`, [user, product, amount, price]
+            );
+        }
+    } catch(err) {
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+router.put('/amount_changed', async (req, res)=> {
+    const {user, product_id, amount} = req.body;
+    console.log('hej jag aaa')
+    try {
+        const updateOrderLine = await pool.query(
+                `UPDATE order_lines SET amount = $3 WHERE product_id = $2 AND user_id = $1 AND 
+                order_id = (SELECT order_id FROM orders WHERE user_id = $1 AND status = 'In basket')`, [user, product_id, amount]
+            );
     } catch(err) {
         res.status(500).json({ error: 'Database error'})
     }

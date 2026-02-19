@@ -26,10 +26,10 @@
             <div></div> <!--ta bort plsss lös på ett bättre sätt-->
             <button class="basket-btn">Basket</button>
             <div class="basket-banner">
-                <h3>Your Basket</h3>
-                <ul id="shopping_basket"> </ul>
-
                 <button class="close-btn">Close</button>
+                <h3>Your Basket</h3> 
+                <div id="shopping_basket"> </div>
+                <button class="buy-btn" style="display:none">Buy</button>
             </div>
         </div>
     </header>
@@ -63,13 +63,13 @@
         </div>
     </section>
 
-    <!-- CART -->
+    <!-- CART 
     <section class="cart">
         <h3>🛒 Basket</h3>
         <ul id="cart-items"></ul>
         <p id="total-price">Total: 0 kr</p>
     </section>
-
+-->
 </main>
 
 <script>
@@ -79,7 +79,7 @@ let cart = [];
 async function addToCart() {
     const name = document.getElementById("product-name").textContent;
     const price = parseFloat(document.getElementById("product-price").textContent);
-    const qty = parseInt(document.getElementById("qty").value);
+    const qty = (parseInt(document.getElementById("qty").value) < 1) ? 1 : parseInt(document.getElementById("qty").value); 
     const user = await getUser();
     const user_id = user ? user.id : null;
     console.log("Received user_id from getUser():", user_id);
@@ -95,7 +95,7 @@ async function addToCart() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ user: user_id, product: product_id, amount: qty, price: price})
     });
-    //renderCart();
+    renderCart();
     }
 
 
@@ -143,47 +143,90 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => {
             console.error(err);
             document.querySelector(".product-page").innerHTML = "<p>Product not found.</p>";
-        });
-});
-    document.querySelector('.login-btn').addEventListener('click', ()=> {
-        window.location.href = '/login';
     });
+});
+
+document.querySelector('.login-btn').addEventListener('click', ()=> {
+    window.location.href = '/login';
+});
 
 document.querySelector('.basket-btn').addEventListener('click', () => {
     const banner = document.querySelector('.basket-banner');
     banner.classList.add('active');
+    console.log("fjdhjhsjhfffff");
     renderCart();
 });
 
-async function renderCart() {
-const params = new URLSearchParams(window.location.search);
-const user = await getUser(); //Get user ID from session or set to null if not logged in
-const user_id = user ? user.id : null;
-console.log("Received user_id from getUser():", user_id);
-console.log("user_id in renderCart:", user_id);
-fetch(`/api/current_order/${user_id}`)
-    .then(res => {
-        if (!res.ok) throw new Error("Product not found");
-        return res.json();
-    })
-    .then(products => {
-        console.log("Yippie", products);
-        const list = document.getElementById("shopping_basket");;
-        list.innerHTML = "";
-        let total = 0;
-
-        products.forEach(item => {
-            console.log("item", item)
-            const li = document.createElement("li");
-            li.textContent = `${item.name} x${item.amount} - ${(item.price * item.amount).toFixed(2)} kr`;
-            list.appendChild(li);
-            total += item.price * item.qty;
-        });
-    })
-    .catch(err => {
-        console.error(err);
-        //LÄGG TILL ERROR KANSKE??
+async function amountChanged(input) {
+    const product_id = input.id;
+    const product = document.getElementById(product_id);
+    const currentValue = product.value;
+    if (currentValue < 0) {
+        product.value = 0;
+    };
+    const user = await getUser();
+    const user_id = user ? user.id : null;
+    fetch('/api/amount_changed', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user: user_id, product_id: product_id, amount: currentValue})
     });
+}
+
+async function renderCart() {
+    console.log("qqqqqqqqqq")
+    const params = new URLSearchParams(window.location.search);
+    const user = await getUser(); //Get user ID from session or set to null if not logged in
+    const user_id = user ? user.id : null;
+    console.log("Received user_id from getUser():", user_id);
+    console.log("user_id in renderCart:", user_id);
+    fetch(`/api/current_order/${user_id}`)
+        .then(res => {
+            if (!res.ok) throw new Error("Product not found");
+            return res.json();
+        })
+        .then(products => {
+            console.log("Yippie", products);
+            const list = document.getElementById("shopping_basket");
+            list.innerHTML = "";
+            let total = 0;
+            console.log("aaa", products.length)
+            if (products.length === 0) {
+                const li = document.createElement("li");
+                li.textContent = `No Products :(`;
+                list.appendChild(li);
+            } else if (products.length > 0){
+                products.forEach(item => {
+                    if (item.amount > 0) {
+                        const productLine = document.createElement("div");
+                        productLine.setAttribute("class", "product-line")
+                        const pProducts = document.createElement("p");
+                        pProducts.innerText = `${item.name} (${item.price} kr): `;
+                        productLine.appendChild(pProducts);
+                        const changeAmount = document.createElement("input");
+                        changeAmount.setAttribute("type", "number");
+                        changeAmount.setAttribute("value", item.amount);
+                        changeAmount.setAttribute("class", "amountInput");
+                        changeAmount.setAttribute("min", "0");
+                        changeAmount.setAttribute("onchange", "amountChanged(this)");
+                        changeAmount.setAttribute("id", item.product_id);
+                        productLine.appendChild(changeAmount);
+                        list.appendChild(productLine);
+                        total += item.price * item.amount;
+                        console.log("total", total, item.price)
+                    }
+                });
+                const txtTotal = document.createElement('p')
+                txtTotal.innerText = `Your total is: ${total}`
+                list.appendChild(txtTotal)
+                document.getElementsByClassName("buy-btn")[0].style.display = "inline";
+                
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            //LÄGG TILL ERROR KANSKE??
+        });
 }
 
 async function getUser() {
@@ -199,6 +242,13 @@ document.querySelector('.close-btn').addEventListener('click', (e) => {
         banner.classList.remove('active');
     }
 });
+
+document.querySelector('#qty').addEventListener('input', () => {
+        qtyInput = parseInt(document.getElementById("qty").value);
+        if (qtyInput < 1) {
+            document.getElementById("qty").value = 1;
+        }
+    });
 
 </script>
 
