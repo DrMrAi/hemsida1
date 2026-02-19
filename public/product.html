@@ -254,6 +254,7 @@ async function buyOrder() {
     window.alert("You just bought it!");
     const user = await getUser(); //Get user ID from session or set to null if not logged in
     const user_id = user ? user.id : null;
+    console.log("fff", user)
     fetch('/api/buy_basket', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -262,6 +263,11 @@ async function buyOrder() {
     const banner = document.querySelector('.basket-banner');
     banner.classList.remove('active');
     document.getElementsByClassName("buy-btn")[0].style.display = "none";
+    fetch('/api/create_order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: user_id })
+                })
 };
 
 </script>
