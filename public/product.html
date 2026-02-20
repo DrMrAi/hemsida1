@@ -59,7 +59,7 @@
                 <input type="number" id="qty" value="1" min="1">
             </div>
 
-            <button class="add-cart-btn" onclick="addToCart()">Add to Basket</button>
+            <button class="add-cart-btn">Add to Basket</button>
         </div>
     </section>
 
@@ -76,34 +76,21 @@
 // --- Cart functionality ---
 let cart = [];
 
-async function addToCart() {
-    const name = document.getElementById("product-name").textContent;
-    const price = parseFloat(document.getElementById("product-price").textContent);
-    const qty = (parseInt(document.getElementById("qty").value) < 1) ? 1 : parseInt(document.getElementById("qty").value); 
-    const user = await getUser();
-    const user_id = user ? user.id : null;
-    console.log("Received user_id from getUser():", user_id);
-    console.log("user_id in addToCart:", user_id);
-    console.log("Received ID from /api/me:", user_id);
-        
-    console.log("Adding to cart:", { name, price, qty, user_id });
-    const product_id = window.location.pathname.split("/").pop();
-    cart.push({ name, price, qty });
-    
-    fetch('/api/order_line', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: user_id, product: product_id, amount: qty, price: price})
-    });
-    renderCart();
-    }
-
-
-
 // --- Fetch product data dynamically ---
 document.addEventListener('DOMContentLoaded', () => {
     const productId = window.location.pathname.split("/").pop();
     const loginBtn = document.querySelector('.login-btn');
+    const addBtn = document.querySelector('.add-cart-btn');
+    document.querySelector('#qty').addEventListener('input', () => {
+        qtyInput = parseInt(document.getElementById("qty").value);
+        if (qtyInput < 1) {
+            document.getElementById("qty").value = 1;
+        }
+    });
+    addBtn.addEventListener('click', () => {
+        const quantity = parseInt(document.getElementById("qty").value);
+        addToCart(productId, quantity);
+    });
     fetch('/api/me')
         .then(res => res.json())
         .then(data => {
@@ -157,30 +144,7 @@ document.querySelector('.basket-btn').addEventListener('click', () => {
     renderCart();
 });
 
-async function amountChanged(input) {
-    const product_id = input.id;
-    const product = document.getElementById(product_id);
-    const currentValue = product.value;
-    if (currentValue < 0) {
-        product.value = 0;
-    };
-    const user = await getUser();
-    const user_id = user ? user.id : null;
-    fetch('/api/amount_changed', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: user_id, product_id: product_id, amount: currentValue})
-    });
-}
 
-
-
-async function getUser() {
-    const response = await fetch('/api/me');
-    const data = await response.json();
-    console.log("Received data from /api/me: for function getUser", data);
-    return data.user;
-}
 
 document.querySelector('.close-btn').addEventListener('click', (e) => {
     if (e.target.classList.contains('close-btn')) {
@@ -189,34 +153,10 @@ document.querySelector('.close-btn').addEventListener('click', (e) => {
     }
 });
 
-document.querySelector('#qty').addEventListener('input', () => {
-        qtyInput = parseInt(document.getElementById("qty").value);
-        if (qtyInput < 1) {
-            document.getElementById("qty").value = 1;
-        }
-});
 
-async function buyOrder() {
-    window.alert("You just bought it!");
-    const user = await getUser(); //Get user ID from session or set to null if not logged in
-    const user_id = user ? user.id : null;
-    console.log("fff", user)
-    fetch('/api/buy_basket', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: user_id})
-    });
-    const banner = document.querySelector('.basket-banner');
-    banner.classList.remove('active');
-    document.getElementsByClassName("buy-btn")[0].style.display = "none";
-    fetch('/api/create_order', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user_id: user_id })
-                })
-};
+
 
 </script>
-
+<script src="/functions.js"></script>
 </body>
 </html>

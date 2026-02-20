@@ -129,10 +129,54 @@ async function buyOrder() {
 
 async function loadOrderDetails(orderId) {
     const orderLineResponse = await fetch(`/api/order_lines/${orderId}`);
-    console.log("Received data from /api/order_lines/:id: for function loadOrderDetails", orderLineResponse);
-    return orderLineResponse.json();
+    if (!orderLineResponse.ok) {
+        throw new Error("Order lines not found");
+    }
+    const orderLines = await orderLineResponse.json();
+    return orderLines;
 }
 
+async function getURL(productId) {
+    const response = await fetch(`/api/products/${productId}`);
+    const product = await response.json();
+    console.log("product in getURL", product);
+    return product.image_url;
+}
+
+async function getName(productId) {
+    const response = await fetch(`/api/products/${productId}`);
+    const product = await response.json();
+    console.log("product in getName", product);
+    return product.name;
+}
+
+async function renderOrderLines(orderLines) {
+    const container = document.getElementById('order-lines');
+    container.innerHTML = '';
+    let total = 0;
+    for (const line of orderLines) {
+        total += line.amount*line.price_at_purchase;
+        const lineElement = document.createElement("div");
+        lineElement.classList.add("order-line");
+        const URL = await getURL(line.product_id);
+        const name = await getName(line.product_id);
+        console.log("URL in renderOrderLines", URL);
+        lineElement.innerHTML = `
+            <img src="${URL}" alt="${line.name}">
+            <div class="order-info">
+                <h3>${name}</h3>
+                <p>Quantity: ${line.amount}</p>
+                <p>Price: ${line.price_at_purchase.toFixed(2)} kr</p>
+                <p><strong>Subtotal: ${(line.amount * line.price_at_purchase).toFixed(2)} kr</strong></p>
+            </div>
+        `;
+        container.appendChild(lineElement);
+    }
+
+    const totalElement = document.createElement('h2');
+    totalElement.textContent = `Total: ${total.toFixed(2)} kr`;
+    container.appendChild(totalElement);
+}
 
 //Den här låg i product men används ingenstans???
 async function amountChanged(input) {

@@ -152,6 +152,17 @@ router.post('/create_order', express.json(), async (req, res) => {
         res.status(500).json({ success: false, message: 'Database error' });
     }
 });
+router.get('/order_lines/:orderID', async (req, res) => {
+    try {
+        const orderLines = await pool.query(
+            'SELECT * FROM order_lines WHERE order_id=$1', [req.params.orderID]
+        );
+        res.json(orderLines.rows);
+    } catch(err) {
+        console.log(err)
+        res.status(500).json({ error: 'Database error'})
+    }
+});
 
 //Create a new orderline
 router.post('/order_line', async (req, res)=> {
@@ -323,7 +334,7 @@ router.post('/add_to_basket', async (req, res) => {
                 console.log('already in', alreadyIn.rows)
                 if (alreadyIn.rows.length > 0) {
                     const updateBasket = await pool.query(
-                        `UPDATE basket_lines SET amount = amount + $3, price = price + $4 WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1) AND product_id = $2`, [user_id, product_id, amount, price]
+                        `UPDATE basket_lines SET amount = amount + $3 WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1) AND product_id = $2`, [user_id, product_id, amount]
                     );
                     return res.json({ success: true});
                 }
@@ -395,14 +406,18 @@ router.post('/basket_to_order', async (req, res) => {
             `INSERT INTO orders (user_id, status) VALUES ($1, 'Sent') RETURNING order_id`, [user_id]
         );
         const order_id = createOrder.rows[0].order_id;
+        console.log('order_id', order_id)
         for (const line of basketLines.rows) {
             await pool.query(
-                `INSERT INTO order_lines (order_id, product_id, amount, price) VALUES ($1, $2, $3, $4)`, 
+                `INSERT INTO order_lines (order_id, product_id, amount, price_at_purchase) VALUES ($1, $2, $3, $4)`, 
                 [order_id, line.product_id, line.amount, line.price]
             );
         }
         await pool.query(
             `DELETE FROM basket_lines WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1)`, [user_id]
+        );
+        await pool.query(
+            `DELETE FROM basket WHERE user_id = $1`, [user_id]
         );
 
         res.json({ success: true, order_id });

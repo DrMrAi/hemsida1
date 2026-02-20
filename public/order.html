@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémarket - Product</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <header class="top-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="/" class="logo-link">
+                    <h1>Pokémarket</h1>
+                    <p>Samla. Köp. Lev. hej hej</p>
+                </a>
+            </div>
+            <button class="login-btn"></button>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <button class="active" onclick="window.location.href='/profile'">Mina Beställningar</button>
+    </nav>
+</section>
+<section id="order-lines"></section>
+<!-- MAIN CONTENT -->
+<main class="container">
+    <div id="content">
+        <div class="loading">Loading order details...</div>
+    </div>
+</main>
+
+<script src="/functions.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const loginBtn = document.querySelector('.login-btn');
+        
+        fetch('/api/me')
+            .then(res => res.json())
+            .then(data => {
+                if (data.logged_in) {
+                    loginBtn.textContent = 'Logga ut';
+                    loginBtn.onclick = () => {
+                        fetch('/api/logout', { method: 'POST' })
+                            .then(() => {
+                                window.location.href = `/`;
+                            })
+                            .catch(err => {
+                                console.error('Logout error:', err);
+                                alert('Error logging out. Please try again.');
+                            });
+                    };
+                } else {
+                    loginBtn.textContent = 'Logga in';
+                    loginBtn.onclick = () => {
+                        window.location.href = `/login`;
+                    };
+                }
+            })
+            .catch(err => {
+                console.error('ME error:', err);
+                loginBtn.textContent = 'Logga in';
+            });
+        const orderId = window.location.pathname.split("/").pop()
+        console.log("orderId", orderId);
+        const orderDetails = await loadOrderDetails(orderId);
+        for( const line of orderDetails) {
+            console.log("line", line);
+        }
+        await renderOrderLines(orderDetails);
+    });
+
+</script>
+<script src="/functions.js"></script>
+</body>
+</html>
