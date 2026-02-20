@@ -25,11 +25,18 @@
                     <p>Samla. Köp. Lev. hej hej</p>
                 </a>
             </div>
-            <button class="login-btn"></button>
+
+            <button class="login-btn">Log in</button>
         </div>
         <div class="basket-inner">
             <div></div> <!--ta bort plsss lös på ett bättre sätt-->
             <button class="basket-btn">Basket</button>
+            <div class="basket-banner">
+                <button class="close-btn">Close</button>
+                <h3>Your Basket</h3> 
+                <div id="shopping_basket"> </div>
+                <button class="buy-btn" style="display:none" onclick="buyOrder()">Buy</button>
+            </div>
         </div>
     </header>
 
@@ -53,6 +60,8 @@
 
     <section class="products" id="products"></section>
 </main>
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -93,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.addEventListener('click', () => {
                         const params = new URLSearchParams(window.location.search);
                         const id = params.get('id');
-                        window.location.href = `/product/${product.product_id}?id=${id}`;
+                        window.location.href = `/product/${product.product_id}`;
                     });
 
                     // Replace "200w" with "400w" in imageUrl
@@ -106,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>HP: ${product.ext_hp || '-'}</p>
                         <p>Rarity: ${product.ext_rarity || '-'}</p>
                         <p class="price">${parseFloat(product.price || 0).toFixed(2)} kr</p>
-                        <button onclick="event.stopPropagation(); window.location.href='/product/${product.product_id}'">Köp</button>
+                        <button onclick="event.stopPropagation(); addToCart(${product.product_id}, 1)">Köp</button>
                     `;
 
                     productsContainer.appendChild(card);
@@ -129,8 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => console.error('Error loading products:', err));
 });
-</script>
 
+document.querySelector('.basket-btn').addEventListener('click', () => {
+    const banner = document.querySelector('.basket-banner');
+    banner.classList.add('active');
+    console.log("fjdhjhsjhfffff");
+    renderCart();
+});
+</script>
+<script src="/functions.js"></script>
 
 </body>
 </html>

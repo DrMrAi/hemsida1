@@ -311,10 +311,31 @@ router.post('/create_basket', async (req, res) => {
 //Add product to basket
 router.post('/add_to_basket', async (req, res) => {
     const { user_id, product_id, amount } = req.body;
-    try {        const addToBasket = await pool.query(
-            `INSERT INTO basket_lines ((SELECT basket_id FROM basket WHERE user_id = $1), product_id, amount, price) VALUES ($1, $2, $3, (SELECT price FROM products WHERE product_id = $2))`, [user_id, product_id, amount]
-        );
-        res.json({ success: true, addToBasket});
+    try {
+            try{
+                const priceResult = await pool.query(
+                    `SELECT price FROM products WHERE product_id = $1`, [product_id]);
+                const price = priceResult.rows[0].price;
+                console.log('price', price)
+                const alreadyIn = await pool.query(
+                    `SELECT * FROM basket_lines WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1) AND product_id = $2`, [user_id, product_id]
+                );
+                console.log('already in', alreadyIn.rows)
+                if (alreadyIn.rows.length > 0) {
+                    const updateBasket = await pool.query(
+                        `UPDATE basket_lines SET amount = amount + $3, price = price + $4 WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1) AND product_id = $2`, [user_id, product_id, amount, price]
+                    );
+                    return res.json({ success: true});
+                }
+                const addToBasket = await pool.query(
+                    `INSERT INTO basket_lines (basket_id, product_id, amount, price, name) VALUES ((SELECT basket_id FROM basket WHERE user_id = $1), $2, $3, $4, (SELECT name FROM products WHERE product_id = $2))`, [user_id, product_id, amount, price]
+                );
+                res.json({ success: true });
+            }
+             catch(err) {
+                console.error('Error checking existing basket line:', err);
+                return res.status(500).json({ error: 'Database error'})
+            }
     } catch(err) {
         console.error(err);
         res.status(500).json({ error: 'Database error'})

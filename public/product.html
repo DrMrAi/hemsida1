@@ -173,61 +173,7 @@ async function amountChanged(input) {
     });
 }
 
-async function renderCart() {
-    console.log("qqqqqqqqqq")
-    const params = new URLSearchParams(window.location.search);
-    const user = await getUser(); //Get user ID from session or set to null if not logged in
-    const user_id = user ? user.id : null;
-    console.log("Received user_id from getUser():", user_id);
-    console.log("user_id in renderCart:", user_id);
-    fetch(`/api/current_order/${user_id}`)
-        .then(res => {
-            if (!res.ok) throw new Error("Product not found");
-            return res.json();
-        })
-        .then(products => {
-            console.log("Yippie", products);
-            const list = document.getElementById("shopping_basket");
-            list.innerHTML = "";
-            let total = 0;
-            console.log("aaa", products.length)
-            if (products.length === 0) {
-                const li = document.createElement("li");
-                li.textContent = `No Products :(`;
-                list.appendChild(li);
-            } else if (products.length > 0){
-                products.forEach(item => {
-                    if (item.amount > 0) {
-                        const productLine = document.createElement("div");
-                        productLine.setAttribute("class", "product-line")
-                        const pProducts = document.createElement("p");
-                        pProducts.innerText = `${item.name} (${item.price} kr): `;
-                        productLine.appendChild(pProducts);
-                        const changeAmount = document.createElement("input");
-                        changeAmount.setAttribute("type", "number");
-                        changeAmount.setAttribute("value", item.amount);
-                        changeAmount.setAttribute("class", "amountInput");
-                        changeAmount.setAttribute("min", "0");
-                        changeAmount.setAttribute("onchange", "amountChanged(this)");
-                        changeAmount.setAttribute("id", item.product_id);
-                        productLine.appendChild(changeAmount);
-                        list.appendChild(productLine);
-                        total += item.price * item.amount;
-                        console.log("total", total, item.price)
-                    }
-                });
-                const txtTotal = document.createElement('p')
-                txtTotal.innerText = `Your total is: ${total.toFixed(2)} kr`
-                list.appendChild(txtTotal)
-                document.getElementsByClassName("buy-btn")[0].style.display = "inline";
-                
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            //LÄGG TILL ERROR KANSKE??
-        });
-}
+
 
 async function getUser() {
     const response = await fetch('/api/me');
