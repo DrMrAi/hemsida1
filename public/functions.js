@@ -27,7 +27,6 @@ async function addToCart(productId, quantity) {
     console.log("Received data from /api/add_to_basket: for function addToCart", data);
     }
 
-
 async function getCart() {
     const user = await getUser();
     const response = await fetch(`/api/basket/${user.id}`);
@@ -111,4 +110,43 @@ async function renderCart() {
             console.error(err);
             //LÄGG TILL ERROR KANSKE??
         });
+}
+
+async function buyOrder() {
+    window.alert("You just bought it!");
+    const user = await getUser(); //Get user ID from session or set to null if not logged in
+    const user_id = user ? user.id : null;
+    console.log("fff", user)
+    fetch('/api/basket_to_order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user_id: user_id})
+    });
+    const banner = document.querySelector('.basket-banner');
+    banner.classList.remove('active');
+    document.getElementsByClassName("buy-btn")[0].style.display = "none";
+};
+
+async function loadOrderDetails(orderId) {
+    const orderLineResponse = await fetch(`/api/order_lines/${orderId}`);
+    console.log("Received data from /api/order_lines/:id: for function loadOrderDetails", orderLineResponse);
+    return orderLineResponse.json();
+}
+
+
+//Den här låg i product men används ingenstans???
+async function amountChanged(input) {
+    const product_id = input.id;
+    const product = document.getElementById(product_id);
+    const currentValue = product.value;
+    if (currentValue < 0) {
+        product.value = 0;
+    };
+    const user = await getUser();
+    const user_id = user ? user.id : null;
+    fetch('/api/update_basket', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user_id: user_id, product_id: product_id, amount: currentValue})
+    });
 }
