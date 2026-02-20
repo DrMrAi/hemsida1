@@ -291,5 +291,104 @@ router.put('/buy_basket', async (req, res)=> {
 });
 
 
+//Have not checked below for any pot errors, just quickly added for the basket functionality, so might be some errors in the code, but it should work as a base for the basket functionality
+
+//Create a new basket
+router.post('/create_basket', async (req, res) => {
+    const { user_id } = req.body;
+    console.log("useris", user_id)
+    try {
+        const createBasket = await pool.query(
+            `INSERT INTO basket (user_id) VALUES ($1)`, [user_id]
+        );
+        res.json({ success: true});
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+//Add product to basket
+router.post('/add_to_basket', async (req, res) => {
+    const { user_id, product_id, amount } = req.body;
+    try {        const addToBasket = await pool.query(
+            `INSERT INTO basket_lines ((SELECT basket_id FROM basket WHERE user_id = $1), product_id, amount, price) VALUES ($1, $2, $3, (SELECT price FROM products WHERE product_id = $2))`, [user_id, product_id, amount]
+        );
+        res.json({ success: true, addToBasket});
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+//Get basket info
+router.get('/basket/:userID', async (req, res) => {
+    try {
+        const { userID } = req.params;
+        const basketInfo = await pool.query(
+            `SELECT * FROM basket_lines WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1)`, [userID]
+        );
+        res.json(basketInfo.rows);
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+//Remove product from basket
+router.delete('/remove_from_basket', async (req, res) => {
+    const { user_id, product_id } = req.body;
+    try {
+        const removeFromBasket = await pool.query(
+            `DELETE FROM basket_lines WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1) AND product_id = $2`, [user_id, product_id]
+        );
+        res.json({ success: true });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+//Update product amount in basket
+router.put('/update_basket', async (req, res) => {
+    const { user_id, product_id, amount } = req.body;
+    try {
+        const updateBasket = await pool.query(
+            `UPDATE basket_lines SET amount = $3 WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1) AND product_id = $2`, [user_id, product_id, amount]
+        );
+        res.json({ success: true });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+//Change basket to order
+router.post('/basket_to_order', async (req, res) => {
+    const { user_id } = req.body;
+    try {
+        const basketLines = await pool.query(
+            `SELECT * FROM basket_lines WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1)`, [user_id]
+        );
+        const createOrder = await pool.query(
+            `INSERT INTO orders (user_id, status) VALUES ($1, 'Sent') RETURNING order_id`, [user_id]
+        );
+        const order_id = createOrder.rows[0].order_id;
+        for (const line of basketLines.rows) {
+            await pool.query(
+                `INSERT INTO order_lines (order_id, product_id, amount, price) VALUES ($1, $2, $3, $4)`, 
+                [order_id, line.product_id, line.amount, line.price]
+            );
+        }
+        await pool.query(
+            `DELETE FROM basket_lines WHERE basket_id = (SELECT basket_id FROM basket WHERE user_id = $1)`, [user_id]
+        );
+
+        res.json({ success: true, order_id });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
 
 module.exports = router;
