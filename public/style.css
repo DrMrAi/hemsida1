@@ -501,3 +501,39 @@ body {
     width: 80px;
     display: inline-block;
 }
+
+.order-card {
+    background: #2a75bb;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    min-width: fit-content;
+    /* width: 1000px; */
+    border-radius: 10px;
+}
+
+.order-card:hover {
+    background-color: #1b5a95;
+    cursor: pointer;
+}
+
+#order-lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    min-width: fit-content;
+    border-radius: 10px;
+    background: #2a75bb;
+    padding: 10px;
+}

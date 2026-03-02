@@ -145,6 +145,13 @@ document.querySelector('.basket-btn').addEventListener('click', () => {
     console.log("fjdhjhsjhfffff");
     renderCart();
 });
+
+document.querySelector('.close-btn').addEventListener('click', (e) => {
+    if (e.target.classList.contains('close-btn')) {
+        const banner = document.querySelector('.basket-banner');
+        banner.classList.remove('active');
+    }
+});
 </script>
 <script src="/functions.js"></script>
 
