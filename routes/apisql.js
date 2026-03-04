@@ -427,4 +427,54 @@ router.post('/basket_to_order', async (req, res) => {
     }
 });
 
+router.get('/bought/:userId/:productId', async (req, res) => {
+    try {
+        const userID = req.params.userId;
+        const productId = req.params.productId;
+        const products = await pool.query(
+            `SELECT * FROM order_lines WHERE user_id = $1 and product_id = $2`, [userID, productId]
+        );
+        if (products.rows.length > 0) {
+            res.json(true);
+        } else {
+            res.json(false);
+        }
+
+        
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+router.post('/post_review', async (req, res) => {
+    const { user_id, product_id, comment, grade } = req.body;
+    try {
+        const insert_review = await pool.query(
+            `INSERT INTO reviews (product_id, grade, user_id, comment) VALUES ($1, $2, $3, $4)`, 
+                [product_id, grade, user_id, comment]
+        );
+        res.json({ success: true });
+    } catch(err) {
+        console.error(err, "Could not insert review");
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+router.get('/load_reviews/:productId', async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        const reviews = await pool.query(
+            `SELECT review_id, parent_id, grade, comment, date, username FROM reviews 
+            INNER JOIN users ON reviews.user_id = users.user_id  WHERE product_id = $1`, [productId]
+        );
+        console.log("here", reviews.rows)
+        res.json({ success: true, reviews: reviews.rows});
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
+
 module.exports = router;

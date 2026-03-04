@@ -63,17 +63,16 @@
         </div>
     </section>
 
-    <!-- CART 
-    <section class="cart">
-        <h3>🛒 Basket</h3>
-        <ul id="cart-items"></ul>
-        <p id="total-price">Total: 0 kr</p>
+    <section class="reviews-container">
+        <h1>Reviews</h1>
+        <div id="review-div">
+        </div>
     </section>
--->
+
 </main>
 
-<script>
-// --- Cart functionality ---
+<script src="/functions.js"></script>
+<script> // --- Cart functionality ---
 let cart = [];
 
 // --- Fetch product data dynamically ---
@@ -131,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(err);
             document.querySelector(".product-page").innerHTML = "<p>Product not found.</p>";
     });
+
+   showReviews(productId);
 });
 
 document.querySelector('.login-btn').addEventListener('click', ()=> {
@@ -144,18 +145,12 @@ document.querySelector('.basket-btn').addEventListener('click', () => {
     renderCart();
 });
 
-
-
 document.querySelector('.close-btn').addEventListener('click', (e) => {
     if (e.target.classList.contains('close-btn')) {
         const banner = document.querySelector('.basket-banner');
         banner.classList.remove('active');
     }
 });
-
-
-
-
 </script>
 <script src="/functions.js"></script>
 </body>

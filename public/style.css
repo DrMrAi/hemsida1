@@ -537,3 +537,57 @@ body {
     background: #2a75bb;
     padding: 10px;
 }
+
+.add-review-btn {
+    margin: 10px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(90deg, var(--pokemon-blue), #1e40af);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-view-btn:hover {
+    opacity: 0.9;
+}
+
+.save-review-btn {
+    margin-top: 12px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(90deg, var(--pokemon-blue), #1e40af);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-view-btn:hover {
+   background-color: #111827;
+}
+
+.review {
+    background-color: #a6c1fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.user-name {
+    color: #334155;
+}
+
+.grade {
+    color: #020617;
+}
+
+.comment {
+    color: #020617;
+    margin: 10px;
+}
+
+.review-date{
+    color: #334155;;
+}

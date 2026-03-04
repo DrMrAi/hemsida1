@@ -194,3 +194,100 @@ async function amountChanged(input) {
     body: JSON.stringify({ user_id: user_id, product_id: product_id, amount: currentValue})
     });
 }
+
+
+async function showReviews(productId) {
+    console.log("hereeee")
+    const user = await getUser(); //Get user ID from session or set to null if not logged in
+    const userId = user ? user.id : null;
+    console.log("hhhahahaha", user);
+    fetch(`/api/bought/${userId}/${productId}`)
+    .then(res => {
+            if (!res.ok) throw new Error("Error");
+            return res.json();
+        })
+        .then(bought => {
+            if (bought) {
+                const review_div = document.getElementById("review-div");
+                review_div.innerHTML = '';
+                const add_review_btn = document.createElement("button");
+                add_review_btn.setAttribute("class", "add-review-btn");
+                add_review_btn.setAttribute("onclick", "add_review()");
+                add_review_btn.innerHTML = "Add a review";
+                review_div.appendChild(add_review_btn);
+            }
+            loadReviews(userId, productId)
+        })
+        .catch(err => {
+            console.error(err);
+    });
+}
+
+function loadReviews(userId, productId) {
+    fetch(`/api/load_reviews/${productId}`)
+    .then(res => {
+            if (!res.ok) throw new Error("Error loading reviews");
+            return res.json();
+        })
+        .then(reviews_obj => {
+            reviews = reviews_obj.reviews
+            const reviewDiv = document.getElementById("review-div")
+            reviews.forEach(review => {
+                const parentId = review.parent_id;
+                const grade = review.grade;
+                const comment = review.comment;
+                const date = review.date;
+                const userName = review.username;
+                console.log(review, parentId)
+                if (parentId == null) {
+                    const oneReview = document.createElement("div");
+                    oneReview.setAttribute("class", "review");
+                    oneReview.innerHTML = `<div class="user-name">${userName}</div>
+                    <div class="grade">Grade: ${grade}/5</div>
+                    <div class="comment">Comment: ${comment}</div>
+                    <div class="review-date">${date.split("T")[0]}</div>`;
+                    reviewDiv.appendChild(oneReview);
+                }
+            });
+            
+        })
+        .catch(err => {
+            console.error(err, "Error from database loading reviews");
+    });
+}
+
+
+function add_review() {
+    const reviewDiv = document.getElementById("review-div")
+    reviewDiv.innerHTML = '';
+    const newReview = document.createElement("div");
+    newReview.setAttribute("class", "new-review-div")
+    newReview.innerHTML = `
+            <div class="comment">
+                <div>Comment: </div>
+                <textarea id="comment-box" name="comment-box" rows="4" cols="100"></textarea>
+            </div>
+            <div class="grade-input">
+                <div>Grade: </div>
+                <input type="number" min="0" max="5" id="grade-review">
+            </div>
+            <button class="save-review-btn" onclick="saveReview()">Save review</button>
+    `;
+    reviewDiv.appendChild(newReview);
+}
+
+async function saveReview() {
+    const user = await getUser(); //Get user ID from session or set to null if not logged in
+    const userId = user ? user.id : null;
+    const productId = window.location.pathname.split("/").pop();
+    const comment = document.getElementById("comment-box").value;
+    const grade = document.getElementById("grade-review").value;
+    await fetch('/api/post_review', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({user_id: userId, product_id: productId, comment: comment, grade: grade})
+    });
+    console.log("kom den hit")
+    showReviews(productId);
+}
+
