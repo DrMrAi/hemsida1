@@ -132,6 +132,7 @@
                             <th>ID</th>
                             <th>Username</th>
                             <th>Email</th>
+                            <th>Banned</th>
                             <th>Role</th>
                             <th>Actions</th>
                         </tr>
@@ -144,13 +145,20 @@
                         <td>${user.user_id}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
+                        <td>${user.banned ? 'Yes' : 'No'}</td>
                         <td>${user.role}</td>
                         <td>
-                            <button class="action-btn ban">Ban</button>
-                            <button class="action-btn unban">Unban</button>
+                            ${user.banned ? `
+                                <button class="action-btn unban" onclick="unbanCustomer(${user.user_id})">Unban</button>
+                            ` :` <button class="action-btn ban" onclick="banCustomer(${user.user_id})">ban</button>
+                            `}
                             ${isOwner ? `
-                                <button class="action-btn make-admin" onclick="makeAdmin(${user.user_id})">Make Admin</button>
-                                <button class="action-btn undo-admin" onclick="removeAdmin(${user.user_id})">Undo Admin</button>
+                                ${user.role !== 'Admin' && user.role !== 'Owner' ? `
+                                    <button class="action-btn make-admin" onclick="makeAdmin(${user.user_id})">Make Admin</button>
+                                ` : ''}
+                                ${user.role === 'Admin' ? `
+                                    <button class="action-btn undo-admin" onclick="removeAdmin(${user.user_id})">Undo Admin</button>
+                                ` : ''}
                             ` : ''}
                         </td>
                     </tr>
@@ -224,6 +232,27 @@
             const res = await fetch(`/api/reviews/${reviewId}`, { method: 'DELETE' });
             if (!res.ok) throw new Error('Failed to delete review');
             btn.closest('tr').remove();
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function banCustomer(userId){
+        try {
+            const res = await fetch(`/api/ban/${userId}`, {method: 'PUT'});
+            console.log(res)
+            if (!res.ok) throw new Error('Failed to ban customer');
+            alert('Customer banned')
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function unbanCustomer(userId){
+        if(!confirm(`Do you want to unban user ${userId}?`)) return;
+        try {
+            const res = await fetch(`/api/unban/${userId}`, {method: 'PUT'});
+            if (!res.ok) throw new Error('Failed to unban customer');
         } catch(err) {
             alert('Error: ' + err.message);
         }

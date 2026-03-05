@@ -8,6 +8,11 @@ async function addToCart(productId, quantity) {
         alert('Please log in to add items to your cart.');
         return;
     }
+    console.log(`Banned: ${user.banned}`)
+    if (user.banned) {
+        alert('You are banned and cannot add items to your cart')
+        return;
+    }
     const basket_info = await fetch(`/api/basket/${user.id}`).then(res => res.json());
     console.log("Received data from /api/basket/:id: for function addToCart", basket_info);
     if (basket_info.length === 0) {

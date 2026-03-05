@@ -220,13 +220,13 @@ router.post('/login', express.json(), async (req, res) => {
         if (!passwordMatch) {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
-        req.session.user = { id: user.user_id, email: user.email ,role: user.role, username: user.username}; //store login info in session
+        req.session.user = { id: user.user_id, email: user.email, banned: user.banned, role: user.role, username: user.username}; //store login info in session
         req.session.save(err => {
             if (err) {
                 console.error('Session save error:', err);
                 return res.status(500).json({ success: false, error: 'Session error' });
             }
-            res.json({ success: true, user: { id: user.user_id, email: user.email ,role: user.role, username: user.username} });
+            res.json({ success: true, user: { id: user.user_id, email: user.email, banned: user.banned, role: user.role, username: user.username} });
         });
     } catch (err) {
         console.error(err);
@@ -478,7 +478,7 @@ router.get('/load_reviews/:productId', async (req, res) => {
 });
 router.get('/users', async (req, res) => {
     try {
-        const users = await pool.query('SELECT user_id, username, email, role FROM users');
+        const users = await pool.query('SELECT user_id, username, email, banned, role FROM users');
         res.json(users.rows);
     } catch(err) {
         res.status(500).json({ error: 'Database error' });
@@ -495,6 +495,13 @@ router.get('/reviews', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
+
+/* fetch all users roles */
+router.get('/users/roles', async (req, res) => {
+    const result = await pool.query('SELECT user_id, role FROM users');
+    res.json(result.rows);
+})
+
 router.put('/users/:id/make_admin', async (req, res) => {
     try {
         await pool.query('UPDATE users SET role = $1 WHERE user_id = $2', ['Admin', req.params.id]);
@@ -520,4 +527,25 @@ router.delete('/reviews/:id', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
+
+
+/* Apis for banning and unbanning customers */
+router.put('/unban/:id', async (req, res) => {
+    try {
+        await pool.query('UPDATE users SET banned = $1 WHERE user_id = $2', [false, req.params.id]);
+        res.json({ success: true });
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+router.put('/ban/:id', async (req, res) => {
+    try {
+        await pool.query('UPDATE users SET banned = $1 WHERE user_id = $2', [true, req.params.id])
+        res.json({ success: true });
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
 module.exports = router;
