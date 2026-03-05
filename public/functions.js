@@ -296,3 +296,54 @@ async function saveReview() {
     showReviews(productId);
 }
 
+/* Admin functionality */
+    async function makeAdmin(userId) {
+        try {
+            const res = await fetch(`/api/users/${userId}/make_admin`, { method: 'PUT' });
+            if (!res.ok) throw new Error('Failed to update role');
+            alert('User is now admin!');
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function removeAdmin(userId) {
+        try {
+            const res = await fetch(`/api/users/${userId}/remove_admin`, { method: 'PUT' });
+            if (!res.ok) throw new Error('Failed to update role');
+            alert('Admin role removed!');
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+    async function deleteReview(reviewId, btn) {
+        if (!confirm('Are you sure you want to delete this review?')) return;
+        try {
+            const res = await fetch(`/api/reviews/${reviewId}`, { method: 'DELETE' });
+            if (!res.ok) throw new Error('Failed to delete review');
+            btn.closest('tr').remove();
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function banCustomer(userId){
+        try {
+            const res = await fetch(`/api/ban/${userId}`, {method: 'PUT'});
+            console.log(res)
+            if (!res.ok) throw new Error('Failed to ban customer');
+            alert('Customer banned')
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function unbanCustomer(userId){
+        if(!confirm(`Do you want to unban user ${userId}?`)) return;
+        try {
+            const res = await fetch(`/api/unban/${userId}`, {method: 'PUT'});
+            if (!res.ok) throw new Error('Failed to unban customer');
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
