@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("product-img").src = highResImageUrl;
             document.getElementById("product-img").alt = product.name;
             document.getElementById("product-name").textContent = product.name;
-            document.getElementById("product-desc").textContent = product.description || "No description available.";
+            document.getElementById("product-desc").textContent = product.ext_attack1 || "No description available.";
             document.getElementById("product-price").textContent = parseFloat(product.price || 0).toFixed(2);
             fetch('/api/me').then(res => res.json()).then(data => {
                 console.log('data')
