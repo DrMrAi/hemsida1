@@ -20,11 +20,16 @@
                 </a>
             </div>
             <button class="login-btn"></button>
+            <div class="user-info">
+                <span class="username"></span>
+                <span class="role"></span>
+            </div>
         </div>
     </header>
 
     <nav class="category-nav">
         <button class="active">Mina Beställningar</button>
+        <button id="admin-btn" style="display:none;" onclick="window.location.href='/admin'">Admin Page</button>
     </nav>
 </section>
 
@@ -35,127 +40,144 @@
     </div>
 </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginBtn = document.querySelector('.login-btn');
-            fetch('/api/me')
-                .then(res => res.json())
-                .then(data => {
-                    if (data.logged_in) {
-                        loginBtn.textContent = 'Logga ut';
-                        loginBtn.onclick = () => {
-                            fetch('/api/logout', { method: 'POST' })
-                                .then(() => {
-                                    window.location.href = `/`;
-                                })
-                                .catch(err => {
-                                    console.error('Logout error:', err);
-                                    alert('Error logging out. Please try again.');
-                                });
-                            window.location.href = `/profile`;
-                        };
-                    } else {
-                        loginBtn.textContent = 'Logga in';
-                        loginBtn.onclick = () => {
-                            window.location.href = `/login`;
-                        };
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginBtn = document.querySelector('.login-btn');
+        const usernameSpan = document.querySelector('.username');
+        const roleSpan = document.querySelector('.role');
+
+        fetch('/api/me')
+            .then(res => res.json())
+            .then(data => {
+                if (data.logged_in) {
+                    loginBtn.textContent = 'Logga ut';
+                    usernameSpan.textContent = data.user.username;
+                    roleSpan.textContent = data.user.role;
+                    loginBtn.onclick = () => {
+                        fetch('/api/logout', { method: 'POST' })
+                            .then(() => {
+                                window.location.href = `/`;
+                            })
+                            .catch(err => {
+                                console.error('Logout error:', err);
+                                alert('Error logging out. Please try again.');
+                            });
+                        window.location.href = `/profile`;
+                    };
+
+                    // Show admin button for admin or owner roles
+                    const role = data.user.role;
+                    if (role === 'Admin'|| role === 'Owner') {
+                        document.getElementById('admin-btn').style.display = 'inline-block';
                     }
-                })
-                .catch(err => {
-                    console.error('ME error:', err);
+                } else {
                     loginBtn.textContent = 'Logga in';
-                });
-            
-            loadOrders();
-
-        });
-
-        async function loadOrders() {
-            try {
-                // Check if user is logged in
-                const meResponse = await fetch('/api/me');
-                const meData = await meResponse.json();
-                if (!meData.logged_in) {
-                    document.getElementById('content').innerHTML = '<div class="error">Please log in to view your orders</div>';
-                    return;
+                    usernameSpan.textContent = '';
+                    roleSpan.textContent = '';
+                    loginBtn.onclick = () => {
+                        window.location.href = `/login`;
+                    };
                 }
+            })
+            .catch(err => {
+                console.error('ME error:', err);
+                loginBtn.textContent = 'Logga in';
+                usernameSpan.textContent = '';
+                roleSpan.textContent = '';
+            });
 
-                const userID = meData.user.id;
-                console.log('Fetching orders for user ID:', userID);
+        loadOrders();
 
-                // Fetch user's orders
-                const ordersResponse = await fetch(`/api/orders/${userID}`);
-                console.log('Orders response:', ordersResponse);
-                if (!ordersResponse.ok) {
-                    console.log('Failed to fetch orders:', ordersResponse.status, ordersResponse.statusText);
-                    throw new Error('Failed to fetch orders ordersRepson.ok not ok');
-                }
+    });
 
-                const orders = await ordersResponse.json();
-                console.log('Orders data:', orders);
-                if (orders.length === 0) {
-                    document.getElementById('content').innerHTML = '<div class="no-orders">You have no orders yet</div>';
-                    return;
-                }
-
-                // Build orders HTML
-                let ordersHTML = '<div class="orders-list">';
-                
-                for (const order of orders) {
-                    ordersHTML += `
-                        <div class="order-card" onclick="window.location.href='/order/${order.order_id}'">
-                            <div class="order-header">
-                                <span class="order-id">Order #${order.order_id}</span>
-                                <span class="order-date">${new Date(order.time).toLocaleDateString()}</span>
-                            </div>
-                            <div class="order-details" id="details-${order.id}"></div>
-                        </div>
-                    `;
-                }
-
-                ordersHTML += '</div>';
-                document.getElementById('content').innerHTML = ordersHTML;
-
-            } catch (err) {
-                console.error(err);
-                document.getElementById('content').innerHTML = `<div class="error">Error loading orders: ${err.message}</div>`;
-            }
-        }
-
-        async function toggleDetails(element, orderId, userID) {
-            const detailsElement = document.getElementById(`details-${orderId}`);
-            console.log("hereeeeeeee")
-            
-            if (detailsElement.classList.contains('show')) {
-                detailsElement.classList.remove('show');
+    async function loadOrders() {
+        try {
+            const meResponse = await fetch('/api/me');
+            const meData = await meResponse.json();
+            if (!meData.logged_in) {
+                document.getElementById('content').innerHTML = '<div class="error">Please log in to view your orders</div>';
                 return;
             }
 
-            if (detailsElement.innerHTML === '') {
-                try {
-                    const response = await fetch(`/api/orders/${userID}/${orderId}`);
-                    if (!response.ok) throw new Error('Failed to fetch order details');
-                    
-                    const orderLines = await response.json();
-                    
-                    let detailsHTML = '<div style="font-weight: bold; margin-bottom: 10px;">Order Items:</div>';
-                    orderLines.forEach(line => {
-                        detailsHTML += `
-                            <div class="order-line">
-                                <span>Product #${line.product_id} - Qty: ${line.amount}</span>
-                                <span>$${parseFloat(line.price_at_purchase).toFixed(2)}</span>
-                            </div>
-                        `;
-                    });
-                    
-                    detailsElement.innerHTML = detailsHTML;
-                } catch (err) {
-                    detailsElement.innerHTML = `<div class="error">Error loading details: ${err.message}</div>`;
-                }
+            const userID = meData.user.id;
+            const userRole = meData.user.role;
+            const username = meData.user.username;
+
+            console.log('Fetching orders for use ID:', userID);
+            console.log('User role:', userRole);
+            console.log('Username:', username);
+
+            const ordersResponse = await fetch(`/api/orders/${userID}`);
+            console.log('Orders response:', ordersResponse);
+            if (!ordersResponse.ok) {
+                console.log('Failed to fetch orders:', ordersResponse.status, ordersResponse.statusText);
+                throw new Error('Failed to fetch orders ordersRepson.ok not ok');
             }
 
-            detailsElement.classList.add('show');
+            const orders = await ordersResponse.json();
+            console.log('Orders data:', orders);
+            if (orders.length === 0) {
+                document.getElementById('content').innerHTML = '<div class="no-orders">You have no orders yet</div>';
+                return;
+            }
+
+            let ordersHTML = '<div class="orders-list">';
+            
+            for (const order of orders) {
+                ordersHTML += `
+                    <div class="order-card" onclick="window.location.href='/order/${order.order_id}'">
+                        <div class="order-header">
+                            <span class="order-id">Order #${order.order_id}</span>
+                            <span class="order-date">${new Date(order.time).toLocaleDateString()}</span>
+                        </div>
+                        <div class="order-details" id="details-${order.id}"></div>
+                    </div>
+                `;
+            }
+
+            ordersHTML += '</div>';
+            document.getElementById('content').innerHTML = ordersHTML;
+
+        } catch (err) {
+            console.error(err);
+            document.getElementById('content').innerHTML = `<div class="error">Error loading orders: ${err.message}</div>`;
         }
-    </script>
+    }
+
+    async function toggleDetails(element, orderId, userID) {
+        const detailsElement = document.getElementById(`details-${orderId}`);
+        console.log("hereeeeeeee")
+        
+        if (detailsElement.classList.contains('show')) {
+            detailsElement.classList.remove('show');
+            return;
+        }
+
+        if (detailsElement.innerHTML === '') {
+            try {
+                const response = await fetch(`/api/orders/${userID}/${orderId}`);
+                if (!response.ok) throw new Error('Failed to fetch order details');
+                
+                const orderLines = await response.json();
+                
+                let detailsHTML = '<div style="font-weight: bold; margin-bottom: 10px;">Order Items:</div>';
+                orderLines.forEach(line => {
+                    detailsHTML += `
+                        <div class="order-line">
+                            <span>Product #${line.product_id} - Qty: ${line.amount}</span>
+                            <span>$${parseFloat(line.price_at_purchase).toFixed(2)}</span>
+                        </div>
+                    `;
+                });
+                
+                detailsElement.innerHTML = detailsHTML;
+            } catch (err) {
+                detailsElement.innerHTML = `<div class="error">Error loading details: ${err.message}</div>`;
+            }
+        }
+
+        detailsElement.classList.add('show');
+    }
+</script>
 </body>
 </html>

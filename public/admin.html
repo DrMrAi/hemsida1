@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémarket - Admin</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <header class="top-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="/" class="logo-link">
+                    <h1>Pokémarket</h1>
+                    <p>Samla. Köp. Lev. hej hej</p>
+                </a>
+            </div>
+            <button class="login-btn"></button>
+            <div class="user-info">
+                <span class="username"></span>
+                <span class="role"></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <button onclick="window.location.href='/profile'">Mina Beställningar</button>
+        <button class="active">Admin Page</button>
+    </nav>
+</section>
+
+<main class="container">
+    <div id="content">Loading...</div>
+</main>
+
+<style>
+    .users-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .users-table th {
+        text-align: left;
+        padding: 12px 16px;
+        border-bottom: 1px solid #334155;
+        color: #9ca3af;
+        font-weight: 600;
+    }
+    .users-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #1e293b;
+        vertical-align: middle;
+    }
+    .users-table tr:hover td { background: #111827; }
+    .action-btn {
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background: transparent;
+        color: #e5e7eb;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-right: 6px;
+    }
+    .action-btn:hover { background: #1e293b; }
+    .action-btn.ban { border-color: #ef4444; color: #ef4444; }
+    .action-btn.ban:hover { background: #450a0a; }
+    .action-btn.unban { border-color: #22c55e; color: #22c55e; }
+    .action-btn.unban:hover { background: #052e16; }
+    .action-btn.make-admin { border-color: #2a75bb; color: #93c5fd; }
+    .action-btn.make-admin:hover { background: #1e3a5f; }
+    .action-btn.undo-admin { border-color: #f97316; color: #f97316; }
+    .action-btn.undo-admin:hover { background: #431407; }
+    .section-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 40px 0 10px;
+        color: #e5e7eb;
+    }
+    .section-title:first-child { margin-top: 0; }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginBtn = document.querySelector('.login-btn');
+        const usernameSpan = document.querySelector('.username');
+        const roleSpan = document.querySelector('.role');
+
+        fetch('/api/me')
+            .then(res => res.json())
+            .then(data => {
+                if (data.logged_in) {
+                    loginBtn.textContent = 'Logga ut';
+                    usernameSpan.textContent = data.user.username;
+                    roleSpan.textContent = data.user.role;
+                    loginBtn.onclick = () => {
+                        fetch('/api/logout', { method: 'POST' })
+                            .then(() => { window.location.href = '/'; });
+                    };
+                    loadAll(data.user.role);
+                } else {
+                    loginBtn.textContent = 'Logga in';
+                    loginBtn.onclick = () => { window.location.href = '/login'; };
+                    loadAll(null);
+                }
+            })
+            .catch(err => { console.error('ME error:', err); });
+    });
+
+    async function loadAll(role) {
+        try {
+            const [usersRes, reviewsRes] = await Promise.all([
+                fetch('/api/users'),
+                fetch('/api/reviews')
+            ]);
+            const users = await usersRes.json();
+            const reviews = await reviewsRes.json();
+            const isOwner = role === 'Owner';
+
+            let html = '';
+
+            // Users table
+            html += `<div class="section-title">Users</div>`;
+            html += `
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            for (const user of users) {
+                html += `
+                    <tr>
+                        <td>${user.user_id}</td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.role}</td>
+                        <td>
+                            <button class="action-btn ban">Ban</button>
+                            <button class="action-btn unban">Unban</button>
+                            ${isOwner ? `
+                                <button class="action-btn make-admin" onclick="makeAdmin(${user.user_id})">Make Admin</button>
+                                <button class="action-btn undo-admin" onclick="removeAdmin(${user.user_id})">Undo Admin</button>
+                            ` : ''}
+                        </td>
+                    </tr>
+                `;
+            }
+            html += `</tbody></table>`;
+
+            // Reviews table
+            html += `<div class="section-title">Reviews</div>`;
+            html += `
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product ID</th>
+                            <th>Username</th>
+                            <th>Grade</th>
+                            <th>Comment</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            for (const review of reviews) {
+                html += `
+                    <tr>
+                        <td>${review.review_id}</td>
+                        <td>${review.product_id}</td>
+                        <td>${review.username}</td>
+                        <td>${review.grade}</td>
+                        <td>${review.comment}</td>
+                        <td>${new Date(review.date).toLocaleDateString()}</td>
+                        <td>
+                            <button class="action-btn ban" onclick="deleteReview(${review.review_id}, this)">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            }
+            html += `</tbody></table>`;
+
+            document.getElementById('content').innerHTML = html;
+
+        } catch(err) {
+            document.getElementById('content').innerHTML = `<div class="error">Error loading data: ${err.message}</div>`;
+        }
+    }
+
+    async function makeAdmin(userId) {
+        try {
+            const res = await fetch(`/api/users/${userId}/make_admin`, { method: 'PUT' });
+            if (!res.ok) throw new Error('Failed to update role');
+            alert('User is now admin!');
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function removeAdmin(userId) {
+        try {
+            const res = await fetch(`/api/users/${userId}/remove_admin`, { method: 'PUT' });
+            if (!res.ok) throw new Error('Failed to update role');
+            alert('Admin role removed!');
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+    async function deleteReview(reviewId, btn) {
+        if (!confirm('Are you sure you want to delete this review?')) return;
+        try {
+            const res = await fetch(`/api/reviews/${reviewId}`, { method: 'DELETE' });
+            if (!res.ok) throw new Error('Failed to delete review');
+            btn.closest('tr').remove();
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+</script>
+</body>
+</html>

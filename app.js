@@ -38,7 +38,7 @@ app.use(session({
 app.use(express.static('public'));
 
 // Mount API routes
-const apiCsv = require('./routes/apicsv');
+// const apiCsv = require('./routes/apicsv');
 const apiSql = require('./routes/apisql')
 //app.use('/api', apiCsv);
 app.use('/api', apiSql)
@@ -70,7 +70,14 @@ app.get('/profile', (req, res) => {
     }
     res.sendFile(path.join(__dirname, 'public', 'profile.html'));
 });
-
+app.get('/admin', (req, res) => {
+    console.log(req.session.user.role);
+    console.log(req.session.user.role == 'Admin');
+    if (req.session.user.role != 'Admin' && req.session.user.role != 'Owner') { // redirect to / if non admin tries to get to admin page
+        return res.redirect('/');
+    }
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
 // Homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

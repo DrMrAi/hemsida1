@@ -92,6 +92,7 @@ router.get('/orders/:userID', async (req, res) => {
     console.log('Fetching orders for user ID:', req.params.userID);
     try {
         const orders = await pool.query(
+         
             'SELECT * FROM orders WHERE user_id=$1 AND status!=$2', [req.params.userID, 'In basket']
         );
         //if (orders.rows.length === 0) {
@@ -219,13 +220,13 @@ router.post('/login', express.json(), async (req, res) => {
         if (!passwordMatch) {
             return res.status(401).json({ success: false, error: 'Invalid credentials' });
         }
-        req.session.user = { id: user.user_id, email: user.email }; //store login info in session
+        req.session.user = { id: user.user_id, email: user.email ,role: user.role, username: user.username}; //store login info in session
         req.session.save(err => {
             if (err) {
                 console.error('Session save error:', err);
                 return res.status(500).json({ success: false, error: 'Session error' });
             }
-            res.json({ success: true, user: { id: user.user_id, email: user.email } });
+            res.json({ success: true, user: { id: user.user_id, email: user.email ,role: user.role, username: user.username} });
         });
     } catch (err) {
         console.error(err);
@@ -475,6 +476,48 @@ router.get('/load_reviews/:productId', async (req, res) => {
         res.status(500).json({ error: 'Database error'})
     }
 });
+router.get('/users', async (req, res) => {
+    try {
+        const users = await pool.query('SELECT user_id, username, email, role FROM users');
+        res.json(users.rows);
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+router.get('/reviews', async (req, res) => {
+    try {
+        const reviews = await pool.query(
+            `SELECT reviews.review_id, reviews.parent_id, reviews.product_id, reviews.grade, reviews.comment, reviews.date, users.username 
+             FROM reviews INNER JOIN users ON reviews.user_id = users.user_id`
+        );
+        res.json(reviews.rows);
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+router.put('/users/:id/make_admin', async (req, res) => {
+    try {
+        await pool.query('UPDATE users SET role = $1 WHERE user_id = $2', ['Admin', req.params.id]);
+        res.json({ success: true });
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
 
-
+router.put('/users/:id/remove_admin', async (req, res) => {
+    try {
+        await pool.query('UPDATE users SET role = $1 WHERE user_id = $2', ['Customer', req.params.id]);
+        res.json({ success: true });
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+router.delete('/reviews/:id', async (req, res) => {
+    try {
+        await pool.query('DELETE FROM reviews WHERE review_id = $1', [req.params.id]);
+        res.json({ success: true });
+    } catch(err) {
+        res.status(500).json({ error: 'Database error' });
+    }
+});
 module.exports = router;
