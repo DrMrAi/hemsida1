@@ -351,6 +351,7 @@ async function saveReview() {
     async function deleteProduct(productId){
         try {
             const res = await fetch(`/api/products/${productId}`, {method: 'DELETE'});
+            console.log(res)
             if (!res.ok) throw new Error('Failed to delete product');
         } catch(err) {
             alert('Error: ' + err.message);
@@ -365,7 +366,7 @@ async function saveReview() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ field: field, new_value: newValue })
             });    
-            if (!res.ok) throw new Error('Failed to delete product'); 
+            if (!res.ok) throw new Error('Failed to adjust product'); 
         } catch(err) {
             alert('Error: ' + err.message);
         }

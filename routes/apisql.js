@@ -548,9 +548,13 @@ router.put('/ban/:id', async (req, res) => {
     }
 });
 
+
+
+
+/* Måste lägga till borttagningen av alla reviews osv kopplade till produkten */
 router.delete('/products/:id', async (req, res) => {
     try {
-        await pool.query('DELETE FROM products WHERE prouct_id = $1', [req.params.id]);
+        await pool.query('DELETE FROM products WHERE product_id = $1', [req.params.id]);
         res.json({ success: true});
     } catch(err){
         res.status(500).json({ error: 'Database error'});
