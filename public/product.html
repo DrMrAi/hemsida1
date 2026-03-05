@@ -125,6 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("product-name").textContent = product.name + " - Diamond & Pearl";
             document.getElementById("product-desc").textContent = product.description || "No description available.";
             document.getElementById("product-price").textContent = parseFloat(product.price || 0).toFixed(2);
+            fetch('/api/me').then(res => res.json()).then(data => {
+                console.log('data')
+                console.log(data)
+                console.log(data.logged_in && (data.user.role === 'Admin' || data.user.role === 'Owner'))
+                if (data.logged_in && (data.user.role === 'Admin' || data.user.role === 'Owner')) {
+                    console.log('We should edit')
+                    makeEditable('product-name', 'name', productId);
+                    makeEditable('product-desc', 'description', productId);
+                    makeEditable('product-price', 'price', productId);
+                }
+            });
         })
         .catch(err => {
             console.error(err);

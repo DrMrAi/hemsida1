@@ -529,7 +529,7 @@ router.delete('/reviews/:id', async (req, res) => {
 });
 
 
-/* Apis for banning and unbanning customers */
+/* Apis for admins customers */
 router.put('/unban/:id', async (req, res) => {
     try {
         await pool.query('UPDATE users SET banned = $1 WHERE user_id = $2', [false, req.params.id]);
@@ -547,5 +547,32 @@ router.put('/ban/:id', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
+
+router.delete('/products/:id', async (req, res) => {
+    try {
+        await pool.query('DELETE FROM products WHERE prouct_id = $1', [req.params.id]);
+        res.json({ success: true});
+    } catch(err){
+        res.status(500).json({ error: 'Database error'});
+    }
+})
+
+router.put('/products_new/:id', async (req, res) => {
+    const {field, new_value} = req.body;
+    console.log('field:', field, 'new_value:', new_value, 'id:', req.params.id)
+    const allowedFields = ['name', 'price', 'description']; 
+    const numericFields = ['price'];
+    const cast = numericFields.includes(field) ? '::NUMERIC' : '::TEXT';
+    if (!allowedFields.includes(field)) {
+        return res.status(400).json({ error: 'Invalid field' });
+    }
+    try {
+        await pool.query(`UPDATE products SET ${field} = $1${cast} WHERE product_id = $2`, [new_value, req.params.id]);
+        res.json({ success: true});
+    } catch(err){
+        console.log('DB error:', err);
+        res.status(500).json({ error: 'Database error'});
+    }
+})
 
 module.exports = router;

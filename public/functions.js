@@ -347,3 +347,56 @@ async function saveReview() {
             alert('Error: ' + err.message);
         }
     }
+
+    async function deleteProduct(productId){
+        try {
+            const res = await fetch(`/api/products/${productId}`, {method: 'DELETE'});
+            if (!res.ok) throw new Error('Failed to delete product');
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+
+    async function adjustProduct(productId, field, newValue){
+        console.log('adjustProduct called with:', productId, field, newValue);
+        try {
+            const res = await fetch(`/api/products_new/${productId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ field: field, new_value: newValue })
+            });    
+            if (!res.ok) throw new Error('Failed to delete product'); 
+        } catch(err) {
+            alert('Error: ' + err.message);
+        }
+    }
+    function makeEditable(elementId, field, productId) {
+    const el = document.getElementById(elementId);
+    el.style.cursor = 'pointer';
+    el.title = 'Click to edit';
+    el.addEventListener('click', () => {
+        const current = el.textContent;
+        const input = document.createElement('input');
+        input.value = current;
+        input.style.fontSize = 'inherit';
+        input.style.width = '100%';
+        el.replaceWith(input);
+        input.focus();
+
+        input.addEventListener('blur', async () => {
+            const newValue = input.value.trim();
+            console.log('Saving:', field, newValue);
+            await adjustProduct(productId, field, newValue);
+            input.replaceWith(el);
+            el.textContent = newValue;
+        });
+
+        // Save on Enter key
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') input.blur();
+            if (e.key === 'Escape') {
+                input.replaceWith(el); // cancel edit
+            }
+        });
+    });
+}
