@@ -6,11 +6,9 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
 <!-- HERO -->
 <section class="hero">
     <div class="hero-overlay"></div>
-
     <header class="top-header">
         <div class="header-inner">
             <div class="logo">
@@ -22,22 +20,11 @@
             <button class="login-btn"></button>
         </div>
     </header>
-
     <nav class="category-nav">
         <button class="active" onclick="window.location.href='/profile'">Mina Beställningar</button>
     </nav>
 </section>
 <div id="order-lines"></div>
-<!-- MAIN CONTENT -->
-<!--
-    <main class="container">
-        <div id="content">
-            <div class="loading">Loading order details...</div>
-        </div>
-    </main>
--->
-
-
 <script src="/functions.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -69,16 +56,24 @@
                 console.error('ME error:', err);
                 loginBtn.textContent = 'Logga in';
             });
-        const orderId = window.location.pathname.split("/").pop()
+
+        const orderId = window.location.pathname.split("/").pop();
         console.log("orderId", orderId);
         const orderDetails = await loadOrderDetails(orderId);
-        for( const line of orderDetails) {
+        for (const line of orderDetails) {
             console.log("line", line);
         }
         await renderOrderLines(orderDetails);
-    });
 
+        // Make product images clickable
+        const images = document.querySelectorAll('#order-lines img');
+        images.forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                window.location.href = `/product/${orderDetails[index].product_id}`;
+            });
+        });
+    });
 </script>
-<script src="/functions.js"></script>
 </body>
 </html>

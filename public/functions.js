@@ -187,16 +187,31 @@ async function renderOrderLines(orderLines) {
 async function amountChanged(input) {
     const product_id = input.id;
     const product = document.getElementById(product_id);
-    const currentValue = product.value;
+    const currentValue = parseInt(product.value);
+
     if (currentValue < 0) {
         product.value = 0;
-    };
+        return;
+    }
+
+    if (currentValue === 0) {
+        const user = await getUser();
+        const user_id = user ? user.id : null;
+        await fetch('/api/remove_from_basket', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: user_id, product_id: product_id })
+        });
+        input.closest('.product-line').remove();
+        return;
+    }
+
     const user = await getUser();
     const user_id = user ? user.id : null;
     fetch('/api/update_basket', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user_id: user_id, product_id: product_id, amount: currentValue})
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: user_id, product_id: product_id, amount: currentValue })
     });
 }
 

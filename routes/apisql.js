@@ -410,8 +410,8 @@ router.post('/basket_to_order', async (req, res) => {
         console.log('order_id', order_id)
         for (const line of basketLines.rows) {
             await pool.query(
-                `INSERT INTO order_lines (order_id, product_id, amount, price_at_purchase) VALUES ($1, $2, $3, $4)`, 
-                [order_id, line.product_id, line.amount, line.price]
+                `INSERT INTO order_lines (order_id, product_id, amount, price_at_purchase, user_id) VALUES ($1, $2, $3, $4, $5)`, 
+                [order_id, line.product_id, line.amount, line.price, user_id]
             );
         }
         await pool.query(
