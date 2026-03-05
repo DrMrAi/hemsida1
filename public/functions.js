@@ -206,6 +206,8 @@ async function showReviews(productId) {
     const user = await getUser(); //Get user ID from session or set to null if not logged in
     const userId = user ? user.id : null;
     console.log("hhhahahaha", user);
+    const review_div = document.getElementById("review-div");
+    review_div.innerHTML = '';
     fetch(`/api/bought/${userId}/${productId}`)
     .then(res => {
             if (!res.ok) throw new Error("Error");
@@ -213,8 +215,6 @@ async function showReviews(productId) {
         })
         .then(bought => {
             if (bought) {
-                const review_div = document.getElementById("review-div");
-                review_div.innerHTML = '';
                 const add_review_btn = document.createElement("button");
                 add_review_btn.setAttribute("class", "add-review-btn");
                 add_review_btn.setAttribute("onclick", "add_review()");
@@ -243,15 +243,29 @@ function loadReviews(userId, productId) {
                 const comment = review.comment;
                 const date = review.date;
                 const userName = review.username;
+                const reviewId = review.review_id;
                 console.log(review, parentId)
                 if (parentId == null) {
                     const oneReview = document.createElement("div");
-                    oneReview.setAttribute("class", "review");
+                    oneReview.setAttribute("id", `review-${reviewId}`);
+                    oneReview.setAttribute("class", `review`);
                     oneReview.innerHTML = `<div class="user-name">${userName}</div>
                     <div class="grade">Grade: ${grade}/5</div>
                     <div class="comment">Comment: ${comment}</div>
-                    <div class="review-date">${date.split("T")[0]}</div>`;
+                    <div class="review-date">${date.split("T")[0]}</div>
+                    <div class="reply-review" onclick="replyReview(this, ${reviewId})">Reply</div>`; //lite security risk men ...
                     reviewDiv.appendChild(oneReview);
+                } else {
+                    const replyDiv = document.getElementById(`review-${parentId}`)
+                    console.log("llll", replyDiv, reviewDiv, `review-${parentId}`)
+                    const oneReply = document.createElement("div");
+                    oneReply.setAttribute("id", `review-${reviewId}`);
+                    oneReply.setAttribute("class", "reply");
+                    oneReply.innerHTML = `<div class="user-name">${userName}</div>
+                    <div class="comment">Comment: ${comment}</div>
+                    <div class="review-date">${date.split("T")[0]}</div>
+                    <div class="reply-review" onclick="replyReview(this, ${reviewId})">Reply</div>`; //lite security risk men ...
+                    replyDiv.appendChild(oneReply);
                 }
             });
             
@@ -261,6 +275,36 @@ function loadReviews(userId, productId) {
     });
 }
 
+function replyReview(element, reviewId) {
+    console.log("yeee", element.parentNode)
+    const replyDiv = element.parentNode
+    const newReply = document.createElement("div");
+    newReply.setAttribute("class", "new-reply-div")
+    newReply.innerHTML = `
+            <div class="comment-div">
+                <div>Comment: </div>
+                <textarea id="comment-box" name="comment-box" rows="4" cols="100"></textarea>
+            </div>
+            <button class="save-review-btn" onclick="saveReply(${reviewId})">Save reply</button>
+    `;
+    replyDiv.appendChild(newReply);
+    replyDiv.removeChild(element)
+}
+
+async function saveReply(reviewId) {
+    const user = await getUser(); //Get user ID from session or set to null if not logged in
+    const userId = user ? user.id : null;
+    const productId = window.location.pathname.split("/").pop();
+    const comment = document.getElementById("comment-box").value;
+    await fetch('/api/post_reply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({user_id: userId, product_id: productId, comment: comment, parent_id: reviewId})
+    });
+    console.log("kom den hit")
+    showReviews(productId);
+}
+
 
 function add_review() {
     const reviewDiv = document.getElementById("review-div")
@@ -268,7 +312,7 @@ function add_review() {
     const newReview = document.createElement("div");
     newReview.setAttribute("class", "new-review-div")
     newReview.innerHTML = `
-            <div class="comment">
+            <div class="comment-div">
                 <div>Comment: </div>
                 <textarea id="comment-box" name="comment-box" rows="4" cols="100"></textarea>
             </div>

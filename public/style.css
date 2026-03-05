@@ -584,10 +584,27 @@ body {
 }
 
 .comment {
-    color: #020617;
+    color:#020617;
     margin: 10px;
 }
 
+.comment-div {
+    color: #fff;
+}
+
 .review-date{
-    color: #334155;;
+    color: #334155;
+}
+
+.reply-review{
+    color: #3350d1;
+    cursor: pointer;
+}
+
+.reply {
+    background-color: #5d7ec5;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 3px;
+    margin-left: 50px;
 }

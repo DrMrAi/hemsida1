@@ -462,11 +462,25 @@ router.post('/post_review', async (req, res) => {
     }
 });
 
+router.post('/post_reply', async (req, res) => {
+    const { user_id, product_id, comment, parent_id } = req.body;
+    try {
+        const insert_review = await pool.query(
+            `INSERT INTO reviews (product_id, user_id, comment, parent_id) VALUES ($1, $2, $3, $4)`, 
+                [product_id, user_id, comment, parent_id]
+        );
+        res.json({ success: true });
+    } catch(err) {
+        console.error(err, "Could not insert review");
+        res.status(500).json({ error: 'Database error'})
+    }
+});
+
 router.get('/load_reviews/:productId', async (req, res) => {
     try {
         const productId = req.params.productId;
         const reviews = await pool.query(
-            `SELECT review_id, parent_id, grade, comment, date, username FROM reviews 
+            `SELECT review_id, parent_id, grade, comment, date, username, review_id FROM reviews 
             INNER JOIN users ON reviews.user_id = users.user_id  WHERE product_id = $1`, [productId]
         );
         console.log("here", reviews.rows)
