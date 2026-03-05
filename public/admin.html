@@ -148,10 +148,12 @@
                         <td>${user.banned ? 'Yes' : 'No'}</td>
                         <td>${user.role}</td>
                         <td>
-                            ${user.banned ? `
-                                <button class="action-btn unban" onclick="unbanCustomer(${user.user_id})">Unban</button>
-                            ` :` <button class="action-btn ban" onclick="banCustomer(${user.user_id})">ban</button>
-                            `}
+                            ${user.role !== 'Owner' ? `    
+                                ${user.banned ? `
+                                    <button class="action-btn unban" onclick="unbanCustomer(${user.user_id})">Unban</button>
+                                ` : ` <button class="action-btn ban" onclick="banCustomer(${user.user_id})">ban</button>
+                                `}
+                                `: ''}
                             ${isOwner ? `
                                 ${user.role !== 'Admin' && user.role !== 'Owner' ? `
                                     <button class="action-btn make-admin" onclick="makeAdmin(${user.user_id})">Make Admin</button>
