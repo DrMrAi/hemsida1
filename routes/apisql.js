@@ -12,7 +12,7 @@ function hashPassword(password) {
 // Get all products from server
 router.get('/products', async (req, res) => {
     try {
-        const products = await pool.query('SELECT * FROM products LIMIT 100');
+        const products = await pool.query('SELECT * FROM products WHERE stock > 0 LIMIT 100;');
         res.json(products.rows);
     } catch(err) {
         res.status(500).json({error: 'Database error'})
@@ -27,7 +27,7 @@ router.get('/products/ascending/:sortType', async(req, res) => {
         if (!allowedSort.includes(sortType)) {
             return res.status(400).json({ error: 'Invalid sort type' });
         }
-        const products = await pool.query(`SELECT * FROM products WHERE ${sortType} IS NOT NULL ORDER BY ${sortType}`)
+        const products = await pool.query(`SELECT * FROM products WHERE ${sortType} IS NOT NULL AND stock > 0 ORDER BY ${sortType};`)
         res.json(products.rows)
     } catch(err) {
         console.log(err)
@@ -42,7 +42,7 @@ router.get('/products/descending/:sortType', async(req, res) => {
         if (!allowedSort.includes(sortType)) {
             return res.status(400).json({ error: 'Invalid sort type' });
         }
-        const products = await pool.query(`SELECT * FROM products WHERE ${sortType} IS NOT NULL ORDER BY ${sortType} DESC`)
+        const products = await pool.query(`SELECT * FROM products WHERE ${sortType} IS NOT NULL AND stock > 0 ORDER BY ${sortType} DESC`)
         res.json(products.rows)
     } catch(err) {
         console.log(err)
@@ -554,7 +554,7 @@ router.put('/ban/:id', async (req, res) => {
 /* Måste lägga till borttagningen av alla reviews osv kopplade till produkten */
 router.delete('/products/:id', async (req, res) => {
     try {
-        await pool.query('DELETE FROM products WHERE product_id = $1', [req.params.id]);
+        await pool.query('UPDATE products SET stock = 0 WHERE product_id = $1;', [req.params.id]);
         res.json({ success: true});
     } catch(err){
         res.status(500).json({ error: 'Database error'});

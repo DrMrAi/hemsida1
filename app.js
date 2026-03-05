@@ -71,8 +71,7 @@ app.get('/profile', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'profile.html'));
 });
 app.get('/admin', (req, res) => {
-    console.log(req.session.user.role);
-    console.log(req.session.user.role == 'Admin');
+ 
     if (req.session.user.role != 'Admin' && req.session.user.role != 'Owner') { // redirect to / if non admin tries to get to admin page
         return res.redirect('/');
     }
